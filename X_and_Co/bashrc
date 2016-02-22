@@ -1,0 +1,15 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+alias e='emacs -nw'
+
+# PS1='\u@\h \W > '
+PS1='\[\e[1;94m\]\u\[\e[m\]@\h:\W > '
+
+PATH=$PATH:/home/pierluigi/.scripts/
+archey 
