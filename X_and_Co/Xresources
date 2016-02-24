@@ -5,7 +5,9 @@ URxvt*scrollBar: false
 
 Rxvt*font: -*-clean-medium-r-*--12-*-*-*-*-*-*-*
 Rxvt*font: xft:Bitstream Vera Sans Mono-8
-URxvt.letterSpace: -1
+URxvt*letterSpace: -1
+URxvt*saveLines:        1200
+URxvt*geometry:         130x50
 
 ! tangoesque scheme
 *background: #111111

@@ -22,7 +22,7 @@ border_width 0
 default_color 35A1D7
 default_shade_color black
 default_outline_color white
-alignment top_left
+alignment top_right
 gap_x 10
 gap_y 80
 no_buffers yes
@@ -37,7 +37,7 @@ maximum_width 350
 TEXT
 #leet chars: ┤┤└└┴┴┐┐││┘┘┌┌├├┬┬┼┼┴┴── ││ ▽▼△▲▵▴▾▿
 ${alignr}${offset -32} ${font DejaVu Sans Mono:pixelsize=14}Arch
-${alignr}${offset 76} $font └─────────── ${sysname}   
+${alignr}${offset 1} $font └─────────── ${sysname}   
 ${alignr}$font │  
 ${alignr}$font ${nodename} -─┤  
 ${alignr}$font < ${kernel} > kernel -─┤    │  
@@ -98,4 +98,4 @@ ${alignr}$font < ${tcp_portmon 32768 61000 rhost 2} ${alignr} ${tcp_portmon 3276
 ${alignr}$font < ${upspeed wlp2s0} k/s >   up -─┤       
 ${alignr}$font < ${upspeedgraph wlp2s0 8,120 8b2132 fe8608} > -─┘    │       
 ${alignr}$font < ${downspeed wlp2s0} k/s > down -─┘       
-${alignr}$font < ${downspeedgraph wlp2s0 8,120 8b2132 fe8608} > -─┘
+${alignr}$font < ${downspeedgraph wlp2s0 8,120 8b2132 fe8608} > -─┘            
