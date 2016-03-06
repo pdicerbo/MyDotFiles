@@ -373,13 +373,17 @@ globalkeys = awful.util.table.join(
     -- Custom Keybindings
     awful.key({ modkey,           }, "Down",  function () awful.util.spawn("xbacklight -dec 40") end),
     awful.key({ modkey,           }, "Up",    function () awful.util.spawn("xbacklight -inc 40") end),
-    awful.key({                   }, "Print", function () awful.util.spawn("scrot -e 'mv $f " .. home .."/Scrot/scrots/ 2>/dev/null'") end),
+    awful.key({                   }, "Print", function () awful.util.spawn("scrot -e 'mv $f " .. home .."/Images/Scrot/ 2>/dev/null'") end),
     awful.key({ modkey,           }, "b",     function () awful.util.spawn(home .. "/bin/fehbg") end),
     awful.key({ modkey,           }, "-",     function () awful.util.spawn("/usr/bin/amixer -c 0 set Master 3- unmute") end),
     awful.key({ modkey,           }, "=",     function () awful.util.spawn("/usr/bin/amixer -c 0 set Master 3+ unmute") end),
     awful.key({ }, "XF86AudioLowerVolume",    function () awful.util.spawn("/usr/bin/amixer -c 0 set Master 3- unmute") end),
     awful.key({ }, "XF86AudioRaiseVolume",    function () awful.util.spawn("/usr/bin/amixer -c 0 set Master 3+ unmute") end),
 
+    -- MyKeys (edit by pdic)
+    awful.key({ modkey, "Shift"   }, "f",     function () awful.util.spawn("/home/pierluigi/.scripts/full-opacity") end),
+    awful.key({ modkey, "Shift"   }, "p",     function () awful.util.spawn("/home/pierluigi/.scripts/partial-opacity") end),
+    
     -- Prompt
     awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
 

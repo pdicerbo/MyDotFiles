@@ -8,7 +8,8 @@ Rxvt*font: xft:Bitstream Vera Sans Mono-8
 URxvt*letterSpace: -1
 URxvt*saveLines:        1200
 URxvt*geometry:         130x50
-
+URxvt*title : URxvt
+URxvt*fading : 40
 ! tangoesque scheme
 *background: #111111
 *foreground: #babdb6

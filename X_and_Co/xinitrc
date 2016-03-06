@@ -51,8 +51,8 @@ fi
 setxkbmap -layout it
 numlockx &
 
-exec startxfce4
-# compton --config /home/pierluigi/.config/compton.conf -b
-# compton --opacity-rule "99:class_g = 'Firefox'" --config /home/pierluigi/.config/compton.conf -b
-# my_walls &
-# exec awesome
+# exec startxfce4
+
+compton --config=/home/pierluigi/.config/compton.conf --shadow-exclude 'n:a:Conky' &
+my_walls &
+exec awesome
