@@ -132,6 +132,7 @@ function expose(rule, s)
         t.selected = false
         capi.keygrabber.stop()
         capi.mousegrabber.stop()
+	t.activated = false
 
         for _, c in pairs(capi.client.get(src)) do
             if clientData[c] then
