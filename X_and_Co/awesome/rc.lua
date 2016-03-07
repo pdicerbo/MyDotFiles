@@ -533,13 +533,13 @@ awful.rules.rules =
      }
    },
 
-   { rule = { class = "vlc" },
-     properties = { floating = true }
-   },
+   -- { rule = { class = "vlc" },
+   --   properties = { floating = true }
+   -- },
 
-   { rule = { class = "thunar" },
-     properties = { floating = true }
-   },
+   -- { rule = { class = "thunar" },
+   --   properties = { floating = true }
+   -- },
 
    -- { rule = { class = "pinentry" },
    --   properties = { floating = true }
@@ -632,7 +632,9 @@ client.connect_signal("manage", function (c, startup)
 end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
-client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal c.opacity = 0.7 end)
+client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+-- client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal c.opacity = 0.7 end)
+
 -- }}}
 
 function run_once(cmd)
