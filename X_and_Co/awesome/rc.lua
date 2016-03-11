@@ -86,8 +86,8 @@ tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
     --tags[s] = awful.tag({ '1 ', '1 ', '2 ', '3 ', '5 ', '8 ', '13 ', '21 ', '34 ', '55 ' }, s, layouts[1])
-   tags[s] = awful.tag({ 'æ', 'ħ ', '¢ ', 'µ ', 'ł ', '¶ ', 'ŧ ', '⚡ ' }, s, {layouts[8], layouts[2], layouts[5], layouts[6],
-									      layouts[8], layouts[2], layouts[5], layouts[6]
+   tags[s] = awful.tag({ '⌘', '♐', '⌥', 'ℵ', '⌥', '⌤', '⚡ ' }, s, {layouts[8], layouts[2], layouts[5], layouts[6],
+							layouts[8], layouts[2], layouts[6]
    })
 end
 -- }}}
@@ -131,13 +131,13 @@ end
   mymainmenu = awful.menu(
   { items =
     {
-       { "awesome", myawesomemenu, beautiful.awesome_icon },
-       { "everything", freedesktop.menu.new(), },
-       { "chromium", 'chromium' },
-       { "firefox", 'firefox' },
-       { "writer", 'libreoffice --writer' },
-       --{ "xchat", 'xchat' },
-       { "gimp", 'gimp-2.8' },
+       { "Awesome", myawesomemenu, beautiful.awesome_icon },
+       { "Everything", freedesktop.menu.new(), },
+       { "Chromium", 'chromium' },
+       { "Firefox", 'firefox' },
+       { "File Manager", 'thunar /home/pierluigi/' },
+       { "Gimp", 'gimp-2.8' },
+       { "Writer", 'libreoffice --writer' },
        --{ "nemo", 'nemo' },
        --{ "tor", home .. '/tor/start-tor-browser' },
     },
@@ -405,7 +405,7 @@ clientkeys = awful.util.table.join(
         function (c)
             local curidx = awful.tag.getidx(c:tags()[1])
             if curidx == 1 then
-               awful.client.movetotag(tags[client.focus.screen][10]) 
+               awful.client.movetotag(tags[client.focus.screen][7]) 
             else
                awful.client.movetotag(tags[client.focus.screen][curidx - 1]) 
             end
@@ -646,7 +646,7 @@ function run_once(cmd)
     awful.util.spawn_with_shell("pgrep -u $USER -x " .. findme .. " > /dev/null || (" .. cmd .. ")")
 end
 
-awful.util.spawn_with_shell(home .. "/bin/fehbg")
+-- awful.util.spawn_with_shell(home .. "/bin/fehbg")
 -- run_once("guake")
 run_once("xfce4-power-manager")
 -- run_once("dropboxd")
