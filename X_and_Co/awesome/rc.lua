@@ -86,36 +86,12 @@ tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
     --tags[s] = awful.tag({ '1 ', '1 ', '2 ', '3 ', '5 ', '8 ', '13 ', '21 ', '34 ', '55 ' }, s, layouts[1])
-   tags[s] = awful.tag({ '⌘', '♐', '⌥', 'ℵ', '⌥', '⌤', '⚡ ' }, s, {layouts[8], layouts[2], layouts[5], layouts[6],
+   tags[s] = awful.tag({ '⌘', '♐', '⌥', 'ℵ', '⌥', '⌤', '⚡ ' }, s, {layouts[8], layouts[2], layouts[2], layouts[6],
 							layouts[8], layouts[2], layouts[6]
    })
 end
 -- }}}
 
-
--- {{{ Wallpaper
-
--- if beautiful.wallpaper then
---     for s = 1, screen.count() do
---        gears.wallpaper.maximized(beautiful.wallpaper, s, true)
---     end
--- end
-
-
--- wallpaper_cmd = "awsetbg -f -r " .. home .. "/Images/" --"/Pictures/Wallpapers"
--- for s = 1, screen.count() do
---    for t = 1, 10 do
---       tags[s][t]:connect_signal("property::selected",
---                             function (tag)
---                                if not tag.selected then return end
---                                if math.random() <= 0.09 then
---                                   awful.util.spawn(home .. "/.scripts/fehbg")
---                                end
---                             end)
---    end
--- end
-
--- }}}
 
 -- {{{ Menu
 -- Create a laucher widget and a main menu
@@ -375,8 +351,10 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Up",    function () awful.util.spawn("xbacklight -inc 40") end),
     awful.key({                   }, "Print", function () awful.util.spawn("scrot -e 'mv $f " .. home .."/Images/Scrot/ 2>/dev/null'") end),
     awful.key({ modkey,           }, "b",     function () awful.util.spawn(home .. "/bin/fehbg") end),
-    awful.key({ modkey,           }, "-",     function () awful.util.spawn("/usr/bin/amixer -c 0 set Master 3- unmute") end),
-    awful.key({ modkey,           }, "=",     function () awful.util.spawn("/usr/bin/amixer -c 0 set Master 3+ unmute") end),
+    -- awful.key({ modkey,           }, "-",     function () awful.util.spawn("/usr/bin/amixer -c 0 set Master 3- unmute") end),
+    -- awful.key({ modkey,           }, "+",     function () awful.util.spawn("/usr/bin/amixer -c 0 set Master 3+ unmute") end),
+    awful.key({"Control", "Shift" }, "-",     function () awful.util.spawn("/usr/bin/amixer -c 0 set Master 3- unmute") end),
+    awful.key({"Control", "Shift" }, "+",     function () awful.util.spawn("/usr/bin/amixer -c 0 set Master 3+ unmute") end),
     awful.key({ }, "XF86AudioLowerVolume",    function () awful.util.spawn("/usr/bin/amixer -c 0 set Master 3- unmute") end),
     awful.key({ }, "XF86AudioRaiseVolume",    function () awful.util.spawn("/usr/bin/amixer -c 0 set Master 3+ unmute") end),
 
@@ -533,13 +511,13 @@ awful.rules.rules =
      }
    },
 
-   -- { rule = { class = "vlc" },
-   --   properties = { floating = true }
-   -- },
+   { rule = { class = "vlc" },
+     properties = { floating = true }
+   },
 
-   -- { rule = { class = "thunar" },
-   --   properties = { floating = true }
-   -- },
+   { rule = { class = "Thunar" },
+     properties = { floating = true }
+   },
 
    -- { rule = { class = "pinentry" },
    --   properties = { floating = true }

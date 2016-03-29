@@ -9,7 +9,7 @@ alias ls='ls --color=auto'
 alias e='emacs -nw'
 
 # PS1='\u@\h \W > '
-PS1='\[\e[1;94m\]\u\[\e[m\]@\h:\W > '
+PS1='\[\e[1;94m\]\u\[\e[1;92m\]@\h:\W \[\e[1;94m\]> \[\e[m\]'
 
 PATH=$PATH:/home/pierluigi/.scripts/
 archey 
