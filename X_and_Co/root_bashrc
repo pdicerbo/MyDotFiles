@@ -1,0 +1,17 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+alias e='emacs -nw'
+
+# PS1='\u@\h \W > '
+# PS1='\[\e[1;91m\]\u\[\e[m\]@\h:\W \[\e[1;95m\]> \[\e[m\]'
+PS1='\[\e[1;95m\]┌─\[\e[1;30m\](\[\e[1;91m\]\u\[\e[m\]@\h\[\e[1;30m\])\[\e[1;95m\]──\[\e[1;30m\][\[\e[1;91m\]\W\[\e[1;30m\]] \[\e[1;95m\]\n└─ \[\e[1;30m\][\[\e[1;91m\]\A\[$(tput sgr0)\]\[\e[1;30m\]] \[\e[1;95m\]> \[\e[m\]'
+
+PATH=$PATH:/home/pierluigi/.scripts/
+
+archey 
