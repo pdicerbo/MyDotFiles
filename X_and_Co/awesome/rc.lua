@@ -114,8 +114,8 @@ end
        { "File Manager", 'thunar /home/pierluigi/' },
        { "Gimp", 'gimp-2.8' },
        { "Writer", 'libreoffice --writer' },
-       --{ "nemo", 'nemo' },
-       --{ "tor", home .. '/tor/start-tor-browser' },
+       { "Calc", 'libreoffice --calc' },
+       { "Vlc", 'vlc' },
     },
     theme = { width = 140 }
   })
@@ -137,23 +137,147 @@ seperator = wibox.widget.textbox("|")
 --seperator.text = "|"
 
 -- Wifiwidget
+wificon = wibox.widget.imagebox()
+wificon:set_image(beautiful.widget_wifi)
+
 wifiwidget = wibox.widget.textbox()
-vicious.register(wifiwidget, vicious.widgets.wifi, "⇗ ${link}%", 5, "wlp2s0")
+vicious.register(wifiwidget, vicious.widgets.wifi, "⇗ ${linp}%", 5, "wlp2s0")
+-- vicious.register(wifiwidget, vicious.widgets.wifi, "${link}%", 5, "wlp2s0")
 
 -- Net Widget
+netup = wibox.widget.imagebox()
+netup:set_image(beautiful.widget_up)
+
+netdw = wibox.widget.imagebox()
+netdw:set_image(beautiful.widget_dw)
+
 netwidget = wibox.widget.textbox()
-vicious.register(netwidget, vicious.widgets.net, "[⇓ ${wlp2s0 down_kb} / ${wlp2s0 up_kb} ⇑]", 1)
+-- vicious.register(netwidget, vicious.widgets.net, "[⇓ ${wlp2s0 down_kb} / ${wlp2s0 up_kb} ⇑]", 1)
+vicious.register(netwidget, vicious.widgets.net, "${wlp2s0 down_kb} / ${wlp2s0 up_kb}", 1)
 
 -- Battery Widget
+baticon = wibox.widget.imagebox()
+baticon:set_image(beautiful.widget_bat)
+
 batwidget = wibox.widget.textbox()
-vicious.register(batwidget, vicious.widgets.bat, "$1$2 % ⚡", 32, "BAT1")
+-- vicious.register(batwidget, vicious.widgets.bat, "⚡ $1$2 %", 32, "BAT1")
+vicious.register(batwidget, vicious.widgets.bat, "$1$2 %", 32, "BAT1")
 
 --CPU Widget
+cpuicon = wibox.widget.imagebox()
+cpuicon:set_image(beautiful.widget_cpu)
+
 cpuwidget = wibox.widget.textbox()
-vicious.register(cpuwidget, vicious.widgets.cpu, "⚒: $1%", 2)
+-- vicious.register(cpuwidget, vicious.widgets.cpu, "⚒: $1%", 2)
+vicious.register(cpuwidget, vicious.widgets.cpu, "$1%", 2)
 
 -- Create a textclock widget
+clockicon = wibox.widget.imagebox()
+clockicon:set_image(beautiful.widget_clock)
+
 mytextclock = awful.widget.textclock(" %a %b %e, %I:%M %p " , 1)
+
+local calendar = nil
+local offset = 0
+
+function remove_calendar()
+   if calendar ~= nil then
+      naughty.destroy(calendar)
+      calendar = nil
+      offset = 0
+   end
+end
+
+function add_calendar(inc_offset)
+   local save_offset = offset
+   remove_calendar()
+   offset = save_offset + inc_offset
+   local datespec = os.date("*t")
+   datespec = datespec.year * 12 + datespec.month - 1 + offset
+   datespec = (datespec % 12 + 1) .. " " .. math.floor(datespec / 12)
+   local cal = awful.util.pread("cal -m " .. datespec)
+   cal = string.gsub(cal, "^%s*(.-)%s*$", "%1")
+   calendar = naughty.notify({
+--	 text = string.format('<span font_desc="%s">%s</span>', "monospace", os.date("%a, %d %B %Y") .. "\n" .. cal),
+--	 text = string.format('<span font_desc="%s">%s</span>', font, cal),
+	 text = string.format('<span font_desc="%s">%s</span>', "monospace", cal),
+	 position = "top_right",
+	 fg = beautiful.fg_urgent,
+	 bg = beautiful.bg_normal,
+	 timeout = 0,
+	 hover_timeout = 0.5,
+	 border_color = beautiful.border_tooltip,
+	 border_width = 1,
+	 -- opacity = 0.94,
+	 -- width = 150,
+	 -- height = 140,
+   })
+end
+
+mytextclock:connect_signal('mouse::enter', function () add_calendar(0) end)
+mytextclock:connect_signal('mouse::leave', function () remove_calendar() end)
+
+mytextclock:buttons(awful.util.table.join(
+		       awful.button({ }, 1, function() add_calendar(1) end),
+		       awful.button({ }, 3, function() add_calendar(-1) end),
+		       awful.button({ 'Shift' }, 1, function() add_calendar(12) end),
+		       awful.button({ 'Shift' }, 3, function() add_calendar(-12) end)))
+
+--RAM
+memicon = wibox.widget.imagebox()
+memicon:set_image(beautiful.widget_mem)
+
+memwidget = wibox.widget.textbox()
+-- vicious.register(memwidget, vicious.widgets.mem, "<span color='" .. beautiful.fg_normal .. "'>$2</span>", 3)
+vicious.register(memwidget, vicious.widgets.mem, "<span color='" .. beautiful.fg_normal .. "'>$1 % ($2MB)</span>", 3)
+
+local function dispmem()
+   local f, infos
+   local capi = {
+      mouse = mouse,
+      screen = screen
+   }
+
+   f = io.popen("free -m | grep total && free -m | grep Mem")
+   infos = f:read("*all")
+   f:close()
+
+   showmeminfo = naughty.notify( {
+	 text= infos,
+	 font    = font,
+	 fg = beautiful.fg_normal,
+	 bg = beautiful.bg_normal,
+	 timeout= 0,
+	 hover_timeout = 0.5,
+	 position = "top_right",
+	 -- margin = 10,
+	 -- height = 61,
+	 -- width = 540,
+	 border_color = beautiful.border_tooltip,
+	 border_width = 1,
+	 -- opacity = 0.94,
+	 screen= capi.mouse.screen })
+end
+
+memwidget:connect_signal('mouse::enter', function () dispmem(path) end)
+memwidget:connect_signal('mouse::leave', function () naughty.destroy(showmeminfo) end)
+
+-- Volume
+
+-- volicon = wibox.widget.imagebox()
+-- volicon:set_image(beautiful.widget_vol)
+--volicon:buttons(awful.util.table.join(awful.button({ }, 1, function () exec(mixer) end)))
+volicon = wibox.widget.imagebox()
+volicon:set_image(beautiful.widget_vol)
+
+volumewidget = wibox.widget.textbox()
+vicious.register( volumewidget, vicious.widgets.volume, "<span color='" .. beautiful.fg_normal .. "'> $1 % </span>", 1, "Master" )
+
+volumewidget:buttons(awful.util.table.join(
+			awful.button({ }, 1, function () awful.util.spawn( "amixer -c 0 set Master 0 mute") end),
+			awful.button({ }, 3, function () awful.util.spawn( "amixer -c 0 set Master 20+ unmute")   end),
+			awful.button({ }, 5, function () awful.util.spawn( "amixer -q sset Master 1dB-")   end)))
+
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -235,7 +359,16 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
 
+    right_layout:add(spacer)
+    right_layout:add(seperator)
+    right_layout:add(volicon)
+    right_layout:add(spacer)
+    right_layout:add(volumewidget)
+    right_layout:add(seperator)
+    
     -- Battery Monitor
+    right_layout:add(spacer)
+    right_layout:add(baticon)    
     right_layout:add(spacer)
     right_layout:add(batwidget)
 
@@ -243,17 +376,31 @@ for s = 1, screen.count() do
     right_layout:add(spacer)
     right_layout:add(seperator)
     right_layout:add(spacer)
+    -- right_layout:add(wificon)
+    -- right_layout:add(spacer)
     right_layout:add(wifiwidget)
 
     -- Net Monitor
     right_layout:add(spacer)
     right_layout:add(seperator)
     right_layout:add(spacer)
+    right_layout:add(netdw)
     right_layout:add(netwidget)
+    right_layout:add(netup)
 
     -- CPU Monitor, and yes I mean Monitor like the god damn lizard!
     right_layout:add(spacer)
     right_layout:add(seperator)
+    right_layout:add(spacer)
+    right_layout:add(memicon)
+    right_layout:add(spacer)
+    right_layout:add(memwidget)
+
+    -- CPU Monitor, and yes I mean Monitor like the god damn lizard!
+    right_layout:add(spacer)
+    right_layout:add(seperator)
+    right_layout:add(spacer)
+    right_layout:add(cpuicon)
     right_layout:add(spacer)
     right_layout:add(cpuwidget)
 
@@ -267,6 +414,7 @@ for s = 1, screen.count() do
     right_layout:add(spacer)
     right_layout:add(seperator)
     right_layout:add(spacer)
+    right_layout:add(clockicon)
     right_layout:add(mytextclock)
 
     -- And this thing!

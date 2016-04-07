@@ -11,7 +11,7 @@ local awful = require("awful")
 themename     = "zenburn"
 config        = "/usr/share/awesome"  --awful.util.getdir("config")
 themedir      = config .. "/themes/" .. themename
-
+iconsdir      = "/home/pierluigi/.config/awesome/icons/widgets" --config .. "/sm4tik-icon-pack/png"
 -- {{{ Main
 theme = {}
 -- }}}
@@ -130,6 +130,16 @@ theme.titlebar_maximized_button_focus_active  = themedir .. "/titlebar/maximized
 theme.titlebar_maximized_button_normal_active = themedir .. "/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_inactive  = themedir .. "/titlebar/maximized_focus_inactive.png"
 theme.titlebar_maximized_button_normal_inactive = themedir .. "/titlebar/maximized_normal_inactive.png"
+
+theme.widget_vol = iconsdir .. "/vol.png"
+theme.widget_cpu = iconsdir .. "/cpu.png"
+theme.widget_bat = iconsdir .. "/bat.png"
+theme.widget_wifi = "/usr/share/icons/Faenza-Dark/status/16/gnome-netstatus-75-100.png"
+theme.widget_clock = iconsdir .. "/clock.png"
+theme.widget_up = iconsdir .. "/up.png"
+theme.widget_dw = iconsdir .. "/down.png"
+theme.widget_mem = iconsdir .. "/mem.png"
+
 -- }}}
 -- }}}
 
