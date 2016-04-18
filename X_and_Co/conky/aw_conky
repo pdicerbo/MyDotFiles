@@ -50,9 +50,11 @@ ${alignr}$font used -─┤    │    │
 ${alignr}$font < ${cpu cpu 1}% > cpu1 -─┤    │    │    │  
 ${alignr}$font < ${cpu cpu 2}% > cpu2 -─┤    │    │    │  
 ${alignr}$font < ${cpu cpu 3}% > cpu3 -─┤    │    │    │  
-${alignr}$font < ${cpu cpu 4}% > cpu4 -─┤    │    │    │  
-${alignr}$font tot -─┘    │    │    │  
-${alignr}$font < ${cpugraph 5,120} > -─┘         │    │    │  
+${alignr}$font < ${cpu cpu 4}% > cpu4 -─┘    │    │    │  
+# ${alignr}$font < ${cpu cpu 4}% > cpu4 -─┤    │    │    │  
+# ${alignr}$font tot -─┘    │    │    │  
+${alignr}$font tot -─┤    │    │  
+${alignr}$font < ${cpugraph 5,120} > -─┘    │    │    │  
 ${alignr}$font < $loadavg > load -─┤    │    │  
 ${alignr}$font < ${top name 1}  ${top cpu 1} > -─┤    │    │  
 ${alignr}$font < ${top name 2}  ${top cpu 2} > -─┤    │    │  
@@ -84,6 +86,11 @@ ${alignr}$font < ${fs_used /}/${fs_size /} > root -─┤    │
 ${alignr}$font < ${fs_bar 5,120 /} > -─┘    │    │  
 ${alignr}$font < ${fs_used /home/}/${fs_size /home/} > home -─┘    │  
 ${alignr}$font < ${fs_bar 5,120 /home} > -─┘         |  
+${alignr}$font │  
+${alignr}$font battery -─┤  
+${alignr}$font < ${battery_time BAT1} >  remaining -─┤     │  
+${alignr}$font < ${battery BAT1} >  status -─┤     │  
+${alignr}$font < ${battery_bar 5,120 BAT1} > -─┘     │  
 ${alignr}$font │  
 ${alignr}$font net -─┘  
 # ${alignr}$font < ${tcp_portmon 1 65535 count} > connections -─┤       

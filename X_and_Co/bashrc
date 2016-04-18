@@ -7,13 +7,14 @@
 
 alias ls='ls --color=auto'
 alias e='emacs -nw'
+alias p='python'
 
 # PS1='\u@\h \W > '
 # PS1='\[\e[1;94m\]\u\[\e[1;92m\]@\h:\W \[\e[1;94m\]> \[\e[m\]'
 
-PS1='\[\e[1;94m\]┌─\[\e[1;30m\](\[\e[1;32m\]\u\[\e[1;92m\]@\h\[\e[1;30m\])\[\e[1;94m\]──\[\e[1;30m\][\[\e[1;32m\]\W\[\e[1;30m\]] \[\e[1;94m\]\n└─ \[\e[1;30m\][\[\e[1;32m\]\A\[$(tput sgr0)\]\[\e[1;30m\]] \[\e[1;94m\]> \[\e[m\]'
+PS1='\[\e[1;94m\]┌─\[\e[1;30m\](\[\e[1;32m\]\u\[\e[1;92m\]@\h\[\e[1;30m\])\[\e[1;94m\]──\[\e[1;30m\][\[\e[1;32m\]\w\[\e[1;30m\]] \[\e[1;94m\]\n└─\[\e[1;30m\][\[\e[1;32m\]\A\[$(tput sgr0)\]\[\e[1;30m\]] \[\e[1;94m\]> \[\e[m\]'
 
-PATH=$PATH:/home/pierluigi/.scripts/:/home/pierluigi/AUR/ygraph_inst/built/bin
+PATH=$PATH:/home/pierluigi/.scripts #:/home/pierluigi/AUR/ygraph_inst/built/bin
 export FFTW_INC=/home/pierluigi/AUR/MyFFTW/include
 export FFTW_LIB=/home/pierluigi/AUR/MyFFTW/lib
 archey 
