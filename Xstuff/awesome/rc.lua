@@ -682,32 +682,15 @@ awful.rules.rules =
    { rule = { class = "Thunar" },
      properties = { floating = true }
    },
-   
-   -- { rule = { class = "pinentry" },
-   --   properties = { floating = true }
-   -- },
-   
+      
    { rule = { class = "gimp" },
      properties = { floating = true }
    },
    
+   
    -- { rule = { class = "URxvt" },
    --   properties = { floating = true }
-   -- },
-   
-   -- { rule = { class = "sun-awt-X11-XFramePeer" },
-   --   properties =
-   --   { floating = true,
-   --     tag = tags[1][10]
-   --   }
-   -- },
-   
-   -- { rule = { class = "Vidalia" },
-   --   properties =
-   --   { floating = true,
-   --     tag = tags[1][10]
-   --   }
-   -- },
+   -- },   
 }
 -- }}}
 
@@ -775,9 +758,6 @@ end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
--- client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal c.opacity = 0.7 end)
-
--- }}}
 
 function run_once(cmd)
    findme = cmd
@@ -788,10 +768,8 @@ function run_once(cmd)
    awful.util.spawn_with_shell("pgrep -u $USER -x " .. findme .. " > /dev/null || (" .. cmd .. ")")
 end
 
--- awful.util.spawn_with_shell(home .. "/bin/fehbg")
--- run_once("guake")
 run_once("xfce4-power-manager")
--- run_once("dropboxd")
--- run_once("nm-applet")
---run_once("xflux -z 87120")
+run_once("compton --config=/home/pierluigi/.config/compton.conf -b")
+
 awful.util.spawn("conky --config=/home/pierluigi/.conky/aw_conky")
+awful.util.spawn("my_walls &")

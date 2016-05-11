@@ -11,10 +11,24 @@ alias p='python'
 
 # PS1='\u@\h \W > '
 # PS1='\[\e[1;94m\]\u\[\e[1;92m\]@\h:\W \[\e[1;94m\]> \[\e[m\]'
+# PS1="\[\e[0;37m\]┌─\$([[ -n \$_ret ]] && echo \"[\[\e[0;31m\]\$_ret\[\e[0;37m\]]-\")[\A]─[\[\e[0;32m\]\u\[\e[0;37m\]]─[\[\e[0;33m\]\w\[\e[0;37m\]]\$(__git_ps1 '─[\[\e[0;31m\]%s\[\e[0;37m\]]')\n\[\e[0;37m\]└─▪ \[\e[0;m\]"
 
-PS1='\[\e[1;94m\]┌─\[\e[1;30m\](\[\e[1;32m\]\u\[\e[1;92m\]@\h\[\e[1;30m\])\[\e[1;94m\]──\[\e[1;30m\][\[\e[1;32m\]\w\[\e[1;30m\]] \[\e[1;94m\]\n└─\[\e[1;30m\][\[\e[1;32m\]\A\[$(tput sgr0)\]\[\e[1;30m\]] \[\e[1;94m\]> \[\e[m\]'
+if [ -f /usr/share/git/completion/git-prompt.sh ]; then 
+    source /usr/share/git/completion/git-prompt.sh
+    GIT_PS1_SHOWSTASHSTATE=true
+    GIT_PS1_SHOWDIRTYSTATE=true
+    GIT_PS1_SHOWUNTRACKEDFILES=true
 
-PATH=$PATH:/home/pierluigi/.scripts #:/home/pierluigi/AUR/ygraph_inst/built/bin
+    PS1='\[\e[1;94m\]┌─\[\e[1;30m\][\[\e[1;32m\]\u\[\e[1;92m\]@\h\[\e[1;30m\]]\[\e[1;94m\]──\[\e[1;30m\][\[\e[1;32m\]\w\[\e[1;30m\]]\[\e[1;94m\]$(__git_ps1 "─[\[\e[1;31m\]Git branch: %s\[\e[1;94m\]]")\n└─\[\e[1;30m\][\[\e[1;32m\]\A\[$(tput sgr0)\]\[\e[1;30m\]] \[\e[1;94m\]> \[\e[m\]'
+
+else
+
+    PS1='\[\e[1;94m\]┌─\[\e[1;30m\][\[\e[1;32m\]\u\[\e[1;92m\]@\h\[\e[1;30m\]]\[\e[1;94m\]──\[\e[1;30m\][\[\e[1;32m\]\w\[\e[1;30m\]]\[\e[1;94m\]\n└─\[\e[1;30m\][\[\e[1;32m\]\A\[$(tput sgr0)\]\[\e[1;30m\]] \[\e[1;94m\]> \[\e[m\]'
+
+fi
+
+# export PATH=$PATH:/home/pierluigi/.scripts #:/home/pierluigi/AUR/ygraph_inst/built/bin
+# export PATH+=/home/pierluigi/.scripts #:/home/pierluigi/AUR/ygraph_inst/built/bin
 export FFTW_INC=/home/pierluigi/AUR/MyFFTW/include
 export FFTW_LIB=/home/pierluigi/AUR/MyFFTW/lib
 archey 
