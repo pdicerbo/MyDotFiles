@@ -686,11 +686,11 @@ awful.rules.rules =
    { rule = { class = "gimp" },
      properties = { floating = true }
    },
-   
-   
-   -- { rule = { class = "URxvt" },
-   --   properties = { floating = true }
-   -- },   
+
+   -- plt.show() generated windows
+   { rule = { class = "Tk" },
+     properties = { floating = true }
+   },
 }
 -- }}}
 
