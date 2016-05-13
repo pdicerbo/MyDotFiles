@@ -1,1 +1,1 @@
-free -m | grep	total && free -m | grep	Mem | sed 's/Mem:\ \ \ \ \ /Mem:/'
+free -m | grep	total && free -hm | grep Mem | sed 's/Mem:\ \ \ \ \ /Mem:/'
