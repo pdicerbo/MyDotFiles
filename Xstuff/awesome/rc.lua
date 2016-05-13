@@ -10,6 +10,7 @@ local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
+local lain = require("lain")
 menubar.cache_entries = false
 menubar.app_folders =
    {
@@ -77,6 +78,10 @@ quake_console = quake({
 beautiful.init(home .. "/.config/awesome/themes/zenburn/theme.lua") 
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
+-- pdicerbo note:
+-- if you want lain layouts, then clone into ~/.config/awesome/lain the lain package with:
+-- git clone https://github.com/copycat-killer/lain.git ~/.config/awesome/lain
+-- info at https://github.com/copycat-killer/lain/wiki
 local layouts =
    {
       awful.layout.suit.max,              --1
@@ -90,7 +95,8 @@ local layouts =
       awful.layout.suit.tile.bottom,      --9
       awful.layout.suit.tile.top,         --10
       awful.layout.suit.max.fullscreen,   --11
-      awful.layout.suit.magnifier         --12
+      awful.layout.suit.magnifier,        --12
+      lain.layout.cascade                 --13       
    }
 -- }}}
 
@@ -101,8 +107,8 @@ for s = 1, screen.count() do
    -- Each screen has its own tag table.
     --tags[s] = awful.tag({ '1 ', '1 ', '2 ', '3 ', '5 ', '8 ', '13 ', '21 ', '34 ', '55 ' }, s, layouts[1])
    tags[s] = awful.tag({ '⌘', '♐', '⌥', 'ℵ', '⌥', '⌤', '⚡ ' }, s,
-      {layouts[7], layouts[2], layouts[2], layouts[6],
-       layouts[7], layouts[2], layouts[6]
+      {layouts[7], layouts[2], layouts[2], layouts[2],
+       layouts[7], layouts[7], layouts[6]
    })
 end
 -- }}}
@@ -769,7 +775,7 @@ function run_once(cmd)
 end
 
 run_once("xfce4-power-manager")
-run_once("compton --config=/home/pierluigi/.config/compton.conf -b")
+run_once("compton --config=/home/pierluigi/.config/compton.conf")
 
 awful.util.spawn("conky --config=/home/pierluigi/.conky/aw_conky")
 awful.util.spawn("my_walls &")
