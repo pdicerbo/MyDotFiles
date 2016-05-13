@@ -229,7 +229,7 @@ function add_calendar(inc_offset)
 	 hover_timeout = 0.5,
 	 border_color = beautiful.border_tooltip,
 	 border_width = 1,
-	 -- opacity = 0.94,
+	 -- opacity = 1.,
 	 -- width = 150,
 	 -- height = 140,
    })
@@ -258,8 +258,10 @@ local function dispmem()
       mouse = mouse,
       screen = screen
    }
-   
-   f = io.popen("free -m | grep total && free -m | grep Mem")
+   -- original
+   -- f = io.popen("free -m | grep total && free -m | grep Mem")
+   -- in order to by aligned, I use my own script MyMemInfo, which use sed s/.....
+   f = io.popen("MyMemInfo")
    infos = f:read("*all")
    f:close()
    
