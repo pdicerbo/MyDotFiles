@@ -1,7 +1,1 @@
-# exec sleep 1
-# echo $$
-# echo $!
-# echo $(echo $$ | xargs kill -9)
-# xkill -id `xwininfo -name URxvt | awk '/Window id:/ {print $4}'`
-
 echo $WINDOWID | xargs xkill -id
