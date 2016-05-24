@@ -725,6 +725,7 @@ local function menu()
 	 cmd = cmd .. " --output " .. o .. " --auto"
 	 if i > 1 then
 	    cmd = cmd .. " --right-of " .. choice[i-1]
+	    -- cmd = cmd .. " --same-as " .. choice[i-1]
 	 end
       end
       -- Disabled outputs
