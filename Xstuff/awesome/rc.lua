@@ -222,6 +222,10 @@ function remove_calendar()
 end
 
 function add_calendar(inc_offset)
+   local LocalInfo = {
+      mouse = mouse,
+      screen = screen
+   }
    local save_offset = offset
    remove_calendar()
    offset = save_offset + inc_offset
@@ -241,6 +245,7 @@ function add_calendar(inc_offset)
 	 hover_timeout = 0.5,
 	 border_color = beautiful.border_tooltip,
 	 border_width = 1,
+	 screen= LocalInfo.mouse.screen
 	 -- opacity = 1.,
 	 -- width = 150,
 	 -- height = 140,
