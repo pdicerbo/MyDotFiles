@@ -62,6 +62,7 @@ local home = os.getenv("HOME")
 editor = "emacs"
 editor_cmd = editor
 modkey = "Mod4"
+ArchIcon = ".config/awesome/archlinux-artwork/icons/archlinux-icon-crystal-16.svg"
 
 quake_console = quake({
       terminal = terminal,
@@ -152,7 +153,7 @@ mymainmenu = awful.menu(
      theme = { width = 140 }
 })
 
-mylauncher = awful.widget.launcher({ image = ".config/awesome/archlinux-artwork/icons/archlinux-icon-crystal-16.svg",
+mylauncher = awful.widget.launcher({ image = ArchIcon,
                                      menu = mymainmenu })
 --beautiful.awesome_icon,
 

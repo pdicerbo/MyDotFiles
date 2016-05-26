@@ -11,14 +11,15 @@ local awful = require("awful")
 themename     = "zenburn"
 config        = "/usr/share/awesome"  --awful.util.getdir("config")
 themedir      = config .. "/themes/" .. themename
-iconsdir      = "/home/pierluigi/.config/awesome/icons/widgets" --config .. "/sm4tik-icon-pack/png"
+iconsdir      = "/home/pierluigi/.config/awesome/icons/widgets"
+WifiIcon      = "/usr/share/icons/Faenza-Dark/status/16/gnome-netstatus-75-100.png"
+
 -- {{{ Main
 theme = {}
 -- }}}
 
 -- {{{ Styles
 theme.font      = "Envy Code R 8"
--- theme.wallpaper_cmd = {"fehbg"} --{ "awsetbg -a /home/pierluigi/Images/modern_style_archlinux.png" }
 
 -- {{{ Colors
 theme.fg_normal  = "#CCDCDC9E"
@@ -134,7 +135,7 @@ theme.titlebar_maximized_button_normal_inactive = themedir .. "/titlebar/maximiz
 theme.widget_vol = iconsdir .. "/vol.png"
 theme.widget_cpu = iconsdir .. "/cpu.png"
 theme.widget_bat = iconsdir .. "/bat.png"
-theme.widget_wifi = "/usr/share/icons/Faenza-Dark/status/16/gnome-netstatus-75-100.png"
+theme.widget_wifi = WifiIcon
 theme.widget_clock = iconsdir .. "/clock.png"
 theme.widget_up = iconsdir .. "/up.png"
 theme.widget_dw = iconsdir .. "/down.png"
