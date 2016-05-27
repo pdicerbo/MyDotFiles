@@ -845,10 +845,14 @@ awful.rules.rules =
      properties = { floating = true }
    },
 
+   { rule = { class = "Skype" },
+     properties = { floating = true }
+   },
+
    -- plt.show() generated windows
    { rule = { class = "Tk" },
      properties = { floating = true }
-   },
+   }
 }
 -- }}}
 
