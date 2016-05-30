@@ -23,6 +23,8 @@ local vicious = require("vicious")
 local revelation = require("revelation")
 local quake = require("quake")
 
+require("collision")()
+
 terminal = "urxvt"
 
 --Freedesktop Not working (;_;)
@@ -483,8 +485,8 @@ root.buttons(awful.util.table.join(
 globalkeys = awful.util.table.join(
    awful.key({}, "F12", function () quake_console:toggle() end),
    awful.key({"Shift"}, "F12", function () quake_console_nx:toggle() end),
-   awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
-   awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
+   -- awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
+   -- awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
    awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
    awful.key({ modkey,           }, "s", revelation), 
    awful.key({ modkey,           }, "j",
