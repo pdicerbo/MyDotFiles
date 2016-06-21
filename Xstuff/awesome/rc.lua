@@ -933,6 +933,7 @@ function run_once(cmd)
 end
 
 -- awful.util.spawn("my_walls &")
+run_once("dropbox start -i &")
 run_once("xfce4-power-manager")
 run_once("compton --config=/home/pierluigi/.config/compton.conf")
 run_once("my_walls &")
