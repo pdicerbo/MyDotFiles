@@ -28,10 +28,13 @@ else
     
 fi
 
-# export PATH=$PATH:/home/pierluigi/.scripts/:/opt/pgi/linux86-64/16.10/bin/
-
 # setxkbmap -option compose:rwin
 
-export PATH=$PATH:/home/pierluigi/.scripts
+if [ -z "$FIRST_ACCESS" ]; then
+    # exporting variables only at the first access
+    export FIRST_ACCESS="true"
+    export PATH=$PATH:/home/pierluigi/.scripts
+    export CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:/usr/include/python3.6m"
+fi
 
 archey 
