@@ -16,7 +16,7 @@ local os    = { getenv = os.getenv }
 themename     = "zenburn"
 config        = "/usr/share/awesome"  --awful.util.getdir("config")
 themedir      = config .. "/themes/" .. themename
-iconsdir      = "/home/pierluigi/.config/awesome/icons/widgets"
+iconsdir      = os.getenv("HOME") .. "/.config/awesome/icons/widgets"
 WifiIcon      = "/usr/share/icons/Faenza-Dark/status/16/gnome-netstatus-75-100.png"
 
 -- {{{ Main
