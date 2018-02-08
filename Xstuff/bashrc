@@ -22,7 +22,7 @@ if [ -f /usr/share/git/completion/git-prompt.sh ]; then
     GIT_PS1_SHOWDIRTYSTATE=true
     GIT_PS1_SHOWUNTRACKEDFILES=true
 
-    PS1='\[\e[1;94m\]┌─\[\e[1;30m\][\[\e[1;32m\]\u@\h\[\e[1;30m\]]\[\e[1;94m\]──\[\e[1;30m\][\[\e[1;32m\]\w\[\e[1;30m\]]\[\e[1;94m\]$(__git_ps1 "─[\[\e[1;92m\]%s\[\e[1;95m\]]")\n└─\[\e[1;30m\][\[\e[1;32m\]\A\[$(tput sgr0)\]\[\e[1;30m\]] \[\e[1;94m\]> \[\e[m\]'
+    PS1='\[\e[1;94m\]┌─\[\e[1;30m\][\[\e[1;32m\]\u@\h\[\e[1;30m\]]\[\e[1;94m\]──\[\e[1;30m\][\[\e[1;32m\]\w\[\e[1;30m\]]\[\e[1;94m\]$(__git_ps1 "─[\[\e[1;92m\]%s\[\e[1;94m\]]")\n└─\[\e[1;30m\][\[\e[1;32m\]\A\[$(tput sgr0)\]\[\e[1;30m\]] \[\e[1;94m\]> \[\e[m\]'
 
 else
     
@@ -36,7 +36,6 @@ if [ -z "$FIRST_ACCESS" ]; then
     # exporting variables only at the first access
     export FIRST_ACCESS="true"
     export PATH=$PATH:$HOME/.scripts
-#    export CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:/usr/include/python3.6m"
 fi
 
 archey 

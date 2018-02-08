@@ -48,10 +48,20 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-# export PATH=$PATH:/home/pierluigi/.scripts
-setxkbmap -layout it
+export EDITOR=vim
+# setxkbmap -layout it
+
+# decomment next line if you want to use
+# US keyboard layout and you want to be able
+# to use (italian) accented letter
+# setxkbmap -option compose:rwin
+
 numlockx &
 
+# choose one of the following WM:
+
+# starts XFCE windows manager
 # exec startxfce4
 
+# starts awesome windows manager
 exec awesome

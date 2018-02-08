@@ -6,8 +6,9 @@ URxvt*scrollBar: false
 !Rxvt*font: -*-clean-medium-r-*--12-*-*-*-*-*-*-*
 Rxvt*font: xft:Bitstream Vera Sans Mono-7
 URxvt*letterSpace: -1
+! URxvt*geometry:         185x55
 URxvt*saveLines:        1200
-URxvt*geometry:         135x55
+URxvt*geometry:         175x55
 URxvt*title : URxvt
 ! URxvt*fading : 40
 
@@ -76,25 +77,24 @@ URxvt*title : URxvt
 ! xterm color scheme
 ! URxvt*color12: rgb:5c/5c/ff
 
-URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select,fullscreen !,tabbed
+URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select,fullscreen
 URxvt.url-select.launcher:  chromium
 URxvt.matcher.button: 1
 URxvt.url-select.underline: true
 URxvt.keysym.M-u:           perl:url-select:select_next
 URxvt.keysym.M-Escape:      perl:keyboard-select:activate
 URxvt.keysym.M-s:           perl:keyboard-select:search
-URxvt.iso14755: False
+URxvt.iso14755: False		
 URxvt.clipboard.copycmd:  xsel -i -b
 URxvt.clipboard.pastecmd: xsel -o -b
-URxvt.keysym.Shift-Control-C: perl:clipboard:copy
-URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+! URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+! URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.keysym.C-C: perl:clipboard:copy
+URxvt.keysym.C-V: perl:clipboard:paste
+URxvt.keysym.C-A-V: perl:clipboard:paste_escaped
 
 URxvt.secondaryScreen: 1
 URxvt.secondaryScroll: 0
 URxvt.secondaryWheel: 1
 
-! URxvt.tabbed.tabbar-fg: 2
-! URxvt.tabbed.tabbar-bg: 0
-! URxvt.tabbed.tab-fg: 4
-! URxvt.tabbed.tab-bg: 0
 URxvt.keysym.F11: perl:fullscreen:switch
