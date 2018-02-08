@@ -3,7 +3,9 @@
 background false
 use_xft yes
 xftfont monospace:pixelsize=9
+#xftfont Bitstream Vera Sans Mono:size=9
 xftalpha 0.8
+override_utf8_locale true
 update_interval 1.0
 total_run_times 0
 own_window yes
@@ -28,7 +30,6 @@ gap_y 50
 no_buffers yes
 cpu_avg_samples 2
 net_avg_samples 2
-override_utf8_locale yes
 use_spacer right #yes
 
 maximum_width 350
@@ -81,17 +82,8 @@ ${alignr}$font < ${top_mem name 2}  ${top_mem mem 2} > -─┤    │    │
 ${alignr}$font < ${top_mem name 3}  ${top_mem mem 3} > -─┤    │    │  
 ${alignr}$font < ${top_mem name 4}  ${top_mem mem 4} > -─┤    │    │  
 ${alignr}$font < ${top_mem name 5}  ${top_mem mem 5} > -─┘    │    │  
-${alignr}$font < $swapperc% - $swap/$swapmax > swap -─┤    │  
-${alignr}$font < ${swapbar 5,120} > -─┘    │    │  
-${alignr}$font < ${fs_used /}/${fs_size /} > root -─┤    │  
-${alignr}$font < ${fs_bar 5,120 /} > -─┘    │    │  
-${alignr}$font < ${fs_used /home/}/${fs_size /home/} > home -─┘    │  
+${alignr}$font < ${fs_used /}/${fs_size /} > root -─┘    │  
 ${alignr}$font < ${fs_bar 5,120 /home} > -─┘         |  
-${alignr}$font │  
-${alignr}$font battery -─┤  
-${alignr}$font < ${battery_time BAT1} >  remaining -─┤    │  
-${alignr}$font < ${battery BAT1} >  status -─┤    │  
-${alignr}$font < ${battery_bar 5,120 BAT1} > -─┘    │  
 ${alignr}$font │  
 ${alignr}$font network -─┘  
 # ${alignr}$font < ${tcp_portmon 1 65535 count} > connections -─┤       
@@ -103,13 +95,13 @@ ${alignr}$font network -─┘
 # ${alignr}$font < ${tcp_portmon 32768 61000 rhost 0} ${alignr} ${tcp_portmon 32768 61000 rservice 0} > -─┤    │       
 # ${alignr}$font < ${tcp_portmon 32768 61000 rhost 1} ${alignr} ${tcp_portmon 32768 61000 rservice 1} > -─┤    │       
 # ${alignr}$font < ${tcp_portmon 32768 61000 rhost 2} ${alignr} ${tcp_portmon 32768 61000 rservice 2} > -─┤    │       
-${if_existing /proc/net/route enp3s0}${alignr}$font < ${addr enp3s0} >   IP -─┤       
-${alignr}$font < ${downspeed enp3s0}/s > down -─┤       
-${alignr}$font < ${downspeedgraph enp3s0 8,120 8b2132 fe8608} > -─┤    │       
-${alignr}$font < ${totaldown enp3s0} > TotDown -─┘    │       
-${alignr}$font < ${upspeed enp3s0}/s >   up -─┘       
-${alignr}$font < ${upspeedgraph enp3s0 8,120 8b2132 fe8608} > -─┤            
-${alignr}$font < ${totalup enp3s0} > TotUp -─┘            
+${if_existing /proc/net/route enp0s3}${alignr}$font < ${addr enp0s3} >   IP -─┤       
+${alignr}$font < ${downspeed enp0s3}/s > down -─┤       
+${alignr}$font < ${downspeedgraph enp0s3 8,120 8b2132 fe8608} > -─┤    │       
+${alignr}$font < ${totaldown enp0s3} > TotDown -─┘    │       
+${alignr}$font < ${upspeed enp0s3}/s >   up -─┘       
+${alignr}$font < ${upspeedgraph enp0s3 8,120 8b2132 fe8608} > -─┤            
+${alignr}$font < ${totalup enp0s3} > TotUp -─┘            
 ${else}${alignr}${alignr}$font  ESSID -─┤       
 ${alignr}$font < ${wireless_essid wlp2s0} > -─┘    │       
 ${alignr}$font   IP -─┤       
