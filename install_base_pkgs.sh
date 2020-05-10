@@ -29,7 +29,7 @@ useradd -m --groups root,wheel,docker pierluigi
 
 echo "pierluigi ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/pierluigi
 
-cp MyDotFiles/root_bashrc $HOME/.bashrc
+cp MyDotFiles/Xstuff/root_bashrc $HOME/.bashrc
 
 echo "finalizing new user environment"
 su pierluigi
