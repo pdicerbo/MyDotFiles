@@ -38,4 +38,4 @@ if [ -z "$FIRST_ACCESS" ]; then
     export PATH=$PATH:$HOME/.scripts
 fi
 
-archey 
+archey3

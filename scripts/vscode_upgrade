@@ -1,0 +1,39 @@
+#!/bin/bash
+
+mkdir -p $HOME/Downloads
+cd $HOME/Downloads
+
+# download latest available version
+wget https://aur.archlinux.org/cgit/aur.git/snapshot/visual-studio-code-bin.tar.gz
+
+# unpack downloaded package
+tar -xzf visual-studio-code-bin.tar.gz
+
+if [ ! -d visual-studio-code-bin ]
+then
+    echo -e "something wrong happens during package decompression\nexit.."
+    exit 42
+fi
+
+cd visual-studio-code-bin
+
+# build package
+makepkg -s
+
+if [ ! -f visual-studio-code-bin-*.pkg.tar.xz ]
+then
+    echo -e "something wrong happens during package construction\nexit.."
+    exit 42
+fi
+
+# install package
+sudo pacman --noconfirm -U visual-studio-code-bin-*.pkg.tar.xz || {
+    echo -e "invalid or corrupted package (or wrong password inserted for three times...)\nexit"
+    exit 42
+}
+
+cd ..
+
+# cleaning...
+echo -e "\n removing compressed package and build folder"
+rm -rf visual-studio-code-bin*
