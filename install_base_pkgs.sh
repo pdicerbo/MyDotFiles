@@ -1,62 +1,47 @@
 #!/bin/bash
 
-echo "base system upgrade"
+echo -e "\n\tinit operations"
+ln -sf /usr/share/zoneinfo/Europe/Rome /etc/localtime
+hwclock --systohc --utc
+echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
+locale-gen
+
+echo "LANG=en_US.UTF-8" > /etc/locale.conf
+echo "ArchLinux" > /etc/hostname
+
+echo "127.0.0.1   localhost" >> /etc/hosts
+echo "::1         localhost" >> /etc/hosts
+echo "127.0.1.1   ArchLinux.localdomain	ArchLinux" >> /etc/hosts
+
+echo -e "\n\tbase system upgrade"
 # upgrade the system
 pacman -Suy --noconfirm
 
-echo "install X server packages"
+echo -e "\n\tinstall X server packages"
 # install X server
 pacman -S --noconfirm xorg xorg-server xorg-apps
 
-echo "install xfce-4 DE"
+echo -e "\n\tinstall xfce-4 DE"
 # install xfce-4 DE
 pacman -S --noconfirm xfce4 xfce4-goodies
 
-echo "install base user utilities"
+echo -e "\n\tinstall base user utilities"
 # user utils
 pacman -S --noconfirm sudo awesome conky picom rxvt-unicode xsel numlockx archey3 wget
 
-echo "install base development utils"
+echo -e "\n\tinstall base development utils"
 # development utils
 pacman -S --noconfirm gcc make cmake linux-headers perl python3 python-pip docker awk vim emacs
 
-echo "enabling/starting docker service"
+echo -e "\n\tenabling/starting docker service"
 systemctl enable docker.service
 systemctl start  docker.service
 
-echo "add new user"
+echo -e "\n\tadd new user"
 useradd -m --groups root,wheel,docker pierluigi
 
-echo "pierluigi ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/pierluigi
+echo -e "pierluigi ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/pierluigi
 
-cp MyDotFiles/Xstuff/root_bashrc $HOME/.bashrc
+cp Xstuff/root_bashrc $HOME/.bashrc
 
-echo "finalizing new user environment"
-su pierluigi
-
-cd $HOME
-git clone https://github.com/pdicerbo/MyDotFiles.git
-
-echo "base utils files adopted"
-cd MyDotFiles
-cp gitconfig $HOME/.gitconfig
-
-mkdir -p $HOME/.scripts
-cp scripts/* $HOME/.scripts/
-
-cd Xstuff
-cp bashrc $HOME/.bashrc
-cp bash_profile $HOME/.bash_profile
-cp xinitrc $HOME/.xinitrc
-cp Xresources $HOME/.Xresources
-
-echo "adopting awesome and conky cfg files.."
-mkdir -p $HOME/.config/
-cp -r awesome $HOME/.config/
-
-cp -r conky $HOME/.config/conky_cfg
-
-echo "cleaning directories and exit"
-cd $HOME
-rm -rf MyDotFiles
-
+echo -e "\n\tremember to set the new user password!"
