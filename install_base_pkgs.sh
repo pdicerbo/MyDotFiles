@@ -13,6 +13,8 @@ echo "127.0.0.1   localhost" >> /etc/hosts
 echo "::1         localhost" >> /etc/hosts
 echo "127.0.1.1   ArchLinux.localdomain	ArchLinux" >> /etc/hosts
 
+timedatectl set-ntp true
+
 echo -e "\n\tbase system upgrade"
 # upgrade the system
 pacman -Suy --noconfirm
@@ -24,6 +26,15 @@ pacman -S --noconfirm xorg xorg-server xorg-apps
 echo -e "\n\tinstall xfce-4 DE"
 # install xfce-4 DE
 pacman -S --noconfirm xfce4 xfce4-goodies
+
+echo -e "\n\tinstall network utilities"
+pacman -S --noconfirm iw wpa_supplicant dialog dhcpcd netctl openssh
+
+echo -e "\n\tinstall bootloader"
+pacman -S --noconfirm grub
+grub-install --target=i386-pc /dev/sda
+sed -i 's/ quiet//' /etc/default/grub
+grub-mkconfig -o /boot/grub/grub.cfg
 
 echo -e "\n\tinstall base user utilities"
 # user utils
@@ -44,4 +55,4 @@ echo -e "pierluigi ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/pierluigi
 
 cp Xstuff/root_bashrc $HOME/.bashrc
 
-echo -e "\n\tremember to set the new user password!"
+echo -e "\n\tremember to set the new user and root password!"
