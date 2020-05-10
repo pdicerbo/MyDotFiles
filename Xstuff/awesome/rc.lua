@@ -55,7 +55,7 @@ local function run_once(cmd_arr)
 end
 
 run_once({ "unclutter -root" }) -- entries must be comma-separated
--- run_once({"compton -b --config=$HOME/.config/compton.conf"})
+run_once({"picom -b --config=$HOME/.config/picom.conf"})
 awful.util.spawn("conky --config=" .. os.getenv("HOME") .. "/.config/conky_cfg/aw_conky")
 
 -- }}}

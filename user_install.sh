@@ -21,6 +21,7 @@ cp Xresources $HOME/.Xresources
 echo -e "\n\tadopting awesome and conky cfg files.."
 mkdir -p $HOME/.config/
 cp -r awesome $HOME/.config/
+cp picom.conf $HOME/.config/
 
 cp -r conky $HOME/.config/conky_cfg
 
