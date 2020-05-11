@@ -45,7 +45,7 @@ echo -e "\n\tinstall base development utils"
 pacman -S --noconfirm gcc make cmake linux-headers perl python3 python-pip docker awk vim emacs
 
 echo -e "\n\tinstall some fonts"
-pacman -S --noconfirm ttf-dejavu noto-fonts
+pacman -S --noconfirm ttf-dejavu noto-fonts gnu-free-fonts
 
 echo -e "\n\tenabling/starting docker service"
 systemctl enable docker.service
