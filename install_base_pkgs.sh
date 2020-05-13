@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo -e "\n\tinit operations"
+echo -e "\n\tinit operations\n"
 ln -sf /usr/share/zoneinfo/Europe/Rome /etc/localtime
 hwclock --systohc --utc
 echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
@@ -15,47 +15,47 @@ echo "127.0.1.1   ArchLinux.localdomain	ArchLinux" >> /etc/hosts
 
 timedatectl set-ntp true
 
-echo -e "\n\tbase system upgrade"
+echo -e "\n\tbase system upgrade\n"
 # upgrade the system
 pacman -Suy --noconfirm
 
-echo -e "\n\tinstall X server packages"
+echo -e "\n\tinstall X server packages\n"
 # install X server
 pacman -S --noconfirm xorg xorg-server xorg-apps
 
-echo -e "\n\tinstall xfce-4 DE"
+echo -e "\n\tinstall xfce-4 DE\n"
 # install xfce-4 DE
 pacman -S --noconfirm xfce4 xfce4-goodies
 
-echo -e "\n\tinstall network utilities"
+echo -e "\n\tinstall network utilities\n"
 pacman -S --noconfirm iw wpa_supplicant dialog dhcpcd netctl openssh
 
-echo -e "\n\tinstall bootloader"
+echo -e "\n\tinstall bootloader\n"
 pacman -S --noconfirm grub
 grub-install --target=i386-pc /dev/sda
 sed -i 's/ quiet//' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
-echo -e "\n\tinstall base user utilities"
+echo -e "\n\tinstall base user utilities\n"
 # user utils
 pacman -S --noconfirm sudo awesome conky picom rxvt-unicode urxvt-perls xsel numlockx archey3 wget
 
-echo -e "\n\tinstall base development utils"
+echo -e "\n\tinstall base development utils\n"
 # development utils
 pacman -S --noconfirm gcc make cmake linux-headers perl python3 python-pip docker awk vim emacs
 
-echo -e "\n\tinstall some fonts"
+echo -e "\n\tinstall some fonts\n"
 pacman -S --noconfirm ttf-dejavu noto-fonts gnu-free-fonts ttf-anonymous-pro
 
-echo -e "\n\tenabling/starting docker service"
+echo -e "\n\tenabling/starting docker service\n"
 systemctl enable docker.service
 systemctl start  docker.service
 
-echo -e "\n\tadd new user"
+echo -e "\n\tadd new user\n"
 useradd -m --groups root,wheel,docker pierluigi
 
-echo -e "pierluigi ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/pierluigi
+echo -e "pierluigi ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/pierluig\ni
 
 cp Xstuff/root_bashrc $HOME/.bashrc
 
-echo -e "\n\tremember to set the new user and root password!"
+echo -e "\n\tremember to set the new user and root password!\n"
