@@ -18,7 +18,7 @@ fi
 cd visual-studio-code-bin
 
 # build package
-makepkg -s
+makepkg -s --noconfirm
 
 if [ ! -f visual-studio-code-bin-*.pkg.tar.xz ]
 then

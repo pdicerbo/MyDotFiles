@@ -30,8 +30,8 @@ pacman -S --noconfirm xfce4 xfce4-goodies
 echo -e "\n\tinstall network utilities\n"
 pacman -S --noconfirm iw wpa_supplicant dialog dhcpcd netctl openssh
 
-echo -e "\n\tinstall bootloader\n"
-pacman -S --noconfirm grub
+echo -e "\n\tinstall GRUB bootloader\n"
+pacman -S --noconfirm grub dosfstools os-prober fuse2
 grub-install --target=i386-pc /dev/sda
 sed -i 's/ quiet//' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
@@ -57,5 +57,6 @@ useradd -m --groups root,wheel,docker pierluigi
 echo -e "pierluigi ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/pierluig\ni
 
 cp Xstuff/root_bashrc $HOME/.bashrc
+cp Xstuff/10-synaptics.conf /etc/X11/xorg.conf.d/
 
 echo -e "\n\tremember to set the new user and root password!\n"
