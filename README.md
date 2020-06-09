@@ -24,7 +24,7 @@ INSTALL SCRIPTS USAGE
   - *mkswap /dev/sda2*
   - *swapon /dev/sda2*
   - *mount /dev/sda1 /mnt*
-  - *pacstrap -i /mnt base linux linux-firmware*
+  - *pacstrap /mnt base base-devel linux linux-firmware*
   - *genfstab -U /mnt >> /mnt/etc/fstab*
   - *arch-chroot /mnt /bin/bash*
 - at this point, install git, download this repository (maybe into the /srv folder.) and execute the base packages installation script:
