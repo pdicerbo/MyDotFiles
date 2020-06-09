@@ -14,8 +14,12 @@ INSTALL SCRIPTS USAGE
   - for a wireless connection, copy an example of cfg file from /etc/netctl/examples/wireless-wpa into /etc/netctl
   - modify the file and exec *netctl start my_profile*
   - test the connection e.g. with *ping www.google.com*
-- exec *timedatectl set-ntp true* to ensure the system clock is accurate
-- perform these preliminary operations to partition the disk (by means of *fdisk -l*), mount it, install the basic packages and the *arch-chroot* into new system (adapt opportunely the partitions ids):
+- to ensure the system clock is accurate, exec:
+  - *timedatectl set-ntp true*
+- perform these preliminary operations to partition the disk, mount it, install the basic packages and the *arch-chroot* into new system (tipically the operations are the following, adapt opportunely the partitions ids):
+  - *fdisk -l*
+  - *fdisk /dev/sda*
+  - *n .... w*
   - *mkfs.ext4 /dev/sda1*
   - *mkswap /dev/sda2*
   - *swapon /dev/sda2*
@@ -27,10 +31,12 @@ INSTALL SCRIPTS USAGE
   - *pacman -S git*
   - *cd /srv && git clone https://github.com/pdicerbo/MyDotFiles.git*
   - *cd MyDotFiles*
-  - *./install_base_pkgs.sh*
-- the last script will generate a user called *pierluigi*; set the *root* and *pierluigi* password, then execute:
-  - *su pierluigi*
+  - *./install_base_pkgs.sh [username]*
+- the last script will generate a user called *pierluigi* if user_name is not provided; set the *root* and *username* password, then execute:
+  - *su username*
   - *./user_install.sh*
 - now you are almost done; exit from the chroot environment and, if you want, copy the netctl config file:
   - *cp /etc/netctl/my_profile /mnt/etc/netctl/my_profile*
   - adopt the correct interface name (exec *netctl enable my_profile* to attempt the connection at every startup)
+  - *exit*
+  - *umount -R /mnt*

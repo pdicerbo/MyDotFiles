@@ -62,7 +62,11 @@ useradd -m --groups root,wheel,docker $input_user
 
 echo -e "$input_user ALL=(ALL) NOPASSWD:ALL\n" > /etc/sudoers.d/$input_user
 
+echo -e "\n\tadd basic user utilities to root user\n"
+./user_install.sh
+
 cp Xstuff/root_bashrc $HOME/.bashrc
+sed -i 's/color = blue/color = red/' $HOME/.archey3.cfg
 cp Xstuff/20-synaptics.conf /etc/X11/xorg.conf.d/
 
 echo -e "\n\tremember to set the new user $input_user and root password!\n"
