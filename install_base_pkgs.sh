@@ -51,12 +51,18 @@ echo -e "\n\tenabling/starting docker service\n"
 systemctl enable docker.service
 systemctl start  docker.service
 
-echo -e "\n\tadd new user\n"
-useradd -m --groups root,wheel,docker pierluigi
+input_user=$1
+if [ -z "$1" ] ; then
+    # set default to first line
+    input_user="pierluigi"
+fi
 
-echo -e "pierluigi ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/pierluig\ni
+echo -e "\n\tadd new user $input_user\n"
+useradd -m --groups root,wheel,docker $input_user
+
+echo -e "$input_user ALL=(ALL) NOPASSWD:ALL\n" > /etc/sudoers.d/$input_user
 
 cp Xstuff/root_bashrc $HOME/.bashrc
-cp Xstuff/10-synaptics.conf /etc/X11/xorg.conf.d/
+cp Xstuff/20-synaptics.conf /etc/X11/xorg.conf.d/
 
-echo -e "\n\tremember to set the new user and root password!\n"
+echo -e "\n\tremember to set the new user $input_user and root password!\n"
