@@ -28,4 +28,5 @@ cp -r conky $HOME/.config/conky_cfg
 echo -e "\n\tcleaning directories and exit\n"
 cd $HOME
 rm -rf MyDotFiles
+echo -e "\n\tremember to remove the original repo folder!\n"
 
