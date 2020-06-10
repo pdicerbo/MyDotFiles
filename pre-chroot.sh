@@ -1,5 +1,6 @@
 #!/bin/bash
 
+REPO_NAME=MyDotFiles
 if mount | grep /mnt > /dev/null; then
     echo -e "\n\tperforming base installation"
 else
@@ -14,5 +15,5 @@ eval $pacstrap_cmd
 echo -e "\n\tgenerating fstab...\n"
 genfstab -U /mnt >> /mnt/etc/fstab
 
-cp -r ../MyDotFiles /mnt/srv
-echo -e "\n\tnow continue by executing\n\t  arch-chroot /mnt /bin/bash\n\t  cd /srv\n\t  ./install_base_pkgs.sh user [vbox|std_install]\n\n"
+cp -r ../$REPO_NAME /mnt/srv
+echo -e "\n\tnow continue by executing\n\n\tarch-chroot /mnt /bin/bash\n\tcd /srv/$REPO_NAME\n\t./install_base_pkgs.sh user [vbox|std_install]\n\n\tbe careful to set the appropriate locale etc..\n"
