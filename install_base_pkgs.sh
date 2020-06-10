@@ -99,4 +99,13 @@ sed -i 's/color = blue/color = red/' $HOME/.archey3.cfg
 cp Xstuff/10-monitor.conf   /etc/X11/xorg.conf.d/
 cp Xstuff/20-synaptics.conf /etc/X11/xorg.conf.d/
 
+if [[ $2 -eq "vbox" ]] ; then
+    echo -e "\n\tadopting the default netctl profile for wirde connection..\n"
+    cd /etc/netctl/
+    cp examples/ethernet-dhcp .
+    sed -i 's/Interface=eth0/Interface=enp0s3/' ethernet-dhcp
+    netctl enable ethernet-dhcp
+else
+    echo -e "\n\tremember to copy a valid netctl profile for wireless connection and enable it.."
+fi
 echo -e "\n\tremember to set the new user [$input_user] and root password!\n\tjust exec the following command\n\t  passwd [username]"
