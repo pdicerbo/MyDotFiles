@@ -1,18 +1,34 @@
 #!/bin/bash
 
+if [[ $# -ne 2 ]]; then
+    echo -e "\n\tUsage\n\t  $0 [username] [vbox|...]\n\n\tif vbox is passed, some other steps will be performed"
+    exit 2
+fi
+
 echo -e "\n\tinit operations\n"
+
+# set localtime
 ln -sf /usr/share/zoneinfo/Europe/Rome /etc/localtime
 hwclock --systohc --utc
-echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
+
+# choose locale language
+# by commenting the undesired choice
+# LOCALE="it_IT.UTF-8"
+LOCALE="en_US.UTF-8"
+
+echo "$LOCALE UTF-8" > /etc/locale.gen
 locale-gen
 
-echo "LANG=en_US.UTF-8" > /etc/locale.conf
+echo "LANG=$LOCALE" > /etc/locale.conf
+
+# set hostname and hosts
 echo "ArchLinux" > /etc/hostname
 
 echo "127.0.0.1   localhost" >> /etc/hosts
 echo "::1         localhost" >> /etc/hosts
 echo "127.0.1.1   ArchLinux.localdomain	ArchLinux" >> /etc/hosts
 
+# adjust time
 timedatectl set-ntp true
 
 echo -e "\n\tbase system upgrade\n"
@@ -30,6 +46,7 @@ pacman -S --noconfirm xfce4 xfce4-goodies
 echo -e "\n\tinstall network utilities\n"
 pacman -S --noconfirm iw wpa_supplicant dialog dhcpcd netctl openssh
 
+# install grub
 echo -e "\n\tinstall GRUB bootloader\n"
 pacman -S --noconfirm grub dosfstools os-prober fuse2
 grub-install --target=i386-pc /dev/sda
@@ -51,11 +68,21 @@ echo -e "\n\tenabling/starting docker service\n"
 systemctl enable docker.service
 systemctl start  docker.service
 
-input_user=$1
-if [ -z "$1" ] ; then
-    # set default to first line
-    input_user="pierluigi"
+if [[ $2 -eq "vbox" ]] ; then
+    echo -e "\n\tinstall virtualbox utils\n"
+    pacman -S --noconfirm virtualbox-guest-utils
+
+    echo -e "\n\tenabling/starting vbox service\n"
+    systemctl enable vboxservice.service
+    systemctl start  vboxservice.service
+
+    echo -e "\n\tadding default shared folder into /etc/fstab\n"
+    echo "shared  /media/sf_shared  vboxsf  uid=1000,gid=1000,rw,dmode=700,fmode=600,noauto,x-systemd.automount" >> /etc/fstab
+else
+    echo -e "\n\tcontinue with default installation\n"
 fi
+
+input_user=$1
 
 echo -e "\n\tadd new user $input_user\n"
 useradd -m --groups root,wheel,docker $input_user
@@ -72,4 +99,4 @@ sed -i 's/color = blue/color = red/' $HOME/.archey3.cfg
 cp Xstuff/10-monitor.conf   /etc/X11/xorg.conf.d/
 cp Xstuff/20-synaptics.conf /etc/X11/xorg.conf.d/
 
-echo -e "\n\tremember to set the new user $input_user and root password!\n"
+echo -e "\n\tremember to set the new user [$input_user] and root password!\n\tjust exec the following command\n\t  passwd [username]"
