@@ -55,7 +55,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 echo -e "\n\tinstall base user utilities\n"
 # user utils
-pacman -S --noconfirm sudo awesome conky picom rxvt-unicode urxvt-perls xsel numlockx archey3 wget
+pacman -S --noconfirm git sudo awesome conky picom rxvt-unicode urxvt-perls xsel numlockx archey3 wget
 
 echo -e "\n\tinstall base development utils\n"
 # development utils
@@ -108,4 +108,4 @@ if [[ $2 -eq "vbox" ]] ; then
 else
     echo -e "\n\tremember to copy a valid netctl profile for wireless connection and enable it.."
 fi
-echo -e "\n\tremember to set the new user [$input_user] and root password!\n\tjust exec the following command\n\t  passwd [username]"
+echo -e "\n\tremember to set the new user [$input_user] and root password!\n\tjust exec the following command\n\t  passwd [username]\n"
