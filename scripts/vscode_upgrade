@@ -20,14 +20,14 @@ cd visual-studio-code-bin
 # build package
 makepkg -s --noconfirm
 
-if [ ! -f visual-studio-code-bin-*.pkg.tar.xz ]
+if [ ! -f visual-studio-code-bin-*.pkg.tar.zst ]
 then
     echo -e "something wrong happens during package construction\nexit.."
     exit 42
 fi
 
 # install package
-sudo pacman --noconfirm -U visual-studio-code-bin-*.pkg.tar.xz || {
+sudo pacman --noconfirm -U visual-studio-code-bin-*.pkg.tar.zst || {
     echo -e "invalid or corrupted package (or wrong password inserted for three times...)\nexit"
     exit 42
 }
