@@ -1,0 +1,63 @@
+#!/bin/bash
+
+function generic_error {
+    echo -e "  generic error occurs..\n"
+    echo -e "  exiting..\n"
+    exit 42
+}
+
+DEFAULT_USER_NAME=user
+
+if [ -z "$1" ]; then
+    echo ""
+    echo "USAGE:"
+    echo -e "\t${0##*/} [old_user_name] new_user_name"
+    echo ""
+    echo "  default value for [optional] argument old_user_name is: $DEFAULT_USER_NAME"
+    echo -e "  exiting..\n"
+    exit 42
+fi
+
+if [ -z "$2" ]; then
+    OldUserName=$DEFAULT_USER_NAME
+    NewUserName=$1
+else
+    OldUserName=$1
+    NewUserName=$2
+fi
+
+HomeDir=/home/$NewUserName
+OldHome=/home/$OldUserName
+
+if id "$OldUserName" > /dev/null 2>&1; then
+    echo -e "\n  starting procedure"
+else
+    echo -e "\n  user $OldUserName does not exist"
+    echo -e "  exiting..\n"
+    exit 42
+fi
+
+
+echo "  moving user $OldUserName to $NewUserName"
+usermod -l $NewUserName $OldUserName || generic_error
+
+echo "  set new home directory [$HomeDir] for user $NewUserName"
+usermod -d $HomeDir -m $NewUserName || generic_error
+
+echo "  moving user group from $OldUserName to $NewUserName"
+groupmod -n $NewUserName $OldUserName || generic_error
+
+echo "  adapting /etc/sudoers file"
+# sed -i "s/$OldUserName ALL/$NewUserName ALL/g" /etc/sudoers || generic_error
+
+rm -f /etc/sudoers.d/$OldUserName
+echo -e "$NewUserName ALL=(ALL) NOPASSWD:ALL\n" > /etc/sudoers.d/$NewUserName
+
+echo "  adapting desktop environment"
+sed -i "s/$OldUserName/$NewUserName/g" $HomeDir/.config/autostart/Conky.desktop
+grep -rl "$OldHome" $HomeDir/.config/xfce4 | xargs sed -i s@$OldHome@$HomeDir@g
+
+echo -e "\n  setting new user password [mandatory]"
+passwd $NewUserName
+
+echo -e "\n  procedure completed :)\n"

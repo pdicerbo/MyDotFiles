@@ -3,7 +3,7 @@
 echo -e "\n\tfinalizing new user environment\n"
 
 cd $HOME
-git clone https://github.com/pdicerbo/MyDotFiles.git
+git clone -b topic/ats_adapt https://github.com/pdicerbo/MyDotFiles.git
 
 echo -e "\n\tbase utils files adopted\n"
 cd MyDotFiles
@@ -11,6 +11,10 @@ cp gitconfig $HOME/.gitconfig
 
 mkdir -p $HOME/.scripts
 cp scripts/* $HOME/.scripts/
+
+if [[ $1 -eq "ROOT" ]] ; then
+    rm -f $HOME/.scripts/change_username
+fi
 
 cd Xstuff
 cp bashrc $HOME/.bashrc

@@ -13,8 +13,8 @@ hwclock --systohc --utc
 
 # choose locale language
 # by commenting the undesired choice
-# LOCALE="it_IT.UTF-8"
-LOCALE="en_US.UTF-8"
+LOCALE="it_IT.UTF-8"
+# LOCALE="en_US.UTF-8"
 
 echo "$LOCALE UTF-8" > /etc/locale.gen
 locale-gen
@@ -59,7 +59,7 @@ pacman -S --noconfirm git sudo awesome conky picom rxvt-unicode urxvt-perls xsel
 
 echo -e "\n\tinstall base development utils\n"
 # development utils
-pacman -S --noconfirm gcc make cmake linux-headers perl python3 python-pip docker awk vim emacs
+pacman -S --noconfirm gcc make cmake linux-headers perl python3 python-pip docker awk vim emacs gedit
 
 echo -e "\n\tinstall some fonts\n"
 pacman -S --noconfirm ttf-dejavu noto-fonts gnu-free-fonts ttf-anonymous-pro
@@ -92,12 +92,12 @@ echo -e "$input_user ALL=(ALL) NOPASSWD:ALL\n" > /etc/sudoers.d/$input_user
 archey3
 
 echo -e "\n\tadd basic user utilities to root user\n"
-./user_install.sh
+echo "ROOT" | xargs ./user_install.sh
 
 cp Xstuff/root_bashrc $HOME/.bashrc
 sed -i 's/color = blue/color = red/' $HOME/.archey3.cfg
 cp Xstuff/10-monitor.conf   /etc/X11/xorg.conf.d/
-cp Xstuff/20-synaptics.conf /etc/X11/xorg.conf.d/
+# cp Xstuff/20-synaptics.conf /etc/X11/xorg.conf.d/
 
 if [[ $2 -eq "vbox" ]] ; then
     echo -e "\n\tadopting the default netctl profile for wired connection..\n"
@@ -108,4 +108,4 @@ if [[ $2 -eq "vbox" ]] ; then
 else
     echo -e "\n\tremember to copy a valid netctl profile for wireless connection and enable it.."
 fi
-echo -e "\n\tremember to set the new user [$input_user] and root password!\n\tjust exec the following command:\n\tpasswd [username]\n\n\tthen continue with:\n\tsu $input_user\n\t./user_install.sh\n"
+echo -e "\n\tremember to set the new user [$input_user] and root password!\n\tjust exec the following command:\n\tpasswd [username]\n\n\tthen continue with:\n\n\t\tsu $input_user\n\t\t./user_install.sh\n"
