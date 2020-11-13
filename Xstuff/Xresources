@@ -8,7 +8,7 @@ Rxvt*font: xft:Bitstream Vera Sans Mono-7
 URxvt*letterSpace: -1
 ! URxvt*geometry:         185x55
 URxvt*saveLines:        1200
-URxvt*geometry:         175x55
+URxvt*geometry:         200x50
 URxvt*title : URxvt
 ! URxvt*fading : 40
 
