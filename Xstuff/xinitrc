@@ -51,7 +51,7 @@ fi
 export EDITOR=vim
 # export EDITOR=gedit
 # setxkbmap -layout it
-# /usr/bin/VBoxClient-all &
+/usr/bin/VBoxClient-all &
 
 # decomment next line if you want to use
 # US keyboard layout and you want to be able
