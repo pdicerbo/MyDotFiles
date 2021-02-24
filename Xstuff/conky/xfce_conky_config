@@ -1,42 +1,43 @@
-alignment top_right
-background yes
-border_width 1
-cpu_avg_samples 2
-default_color cornflowerblue
-default_outline_color white
-default_shade_color white
-double_buffer yes
-draw_borders no
-draw_graph_borders yes
-draw_outline no
-draw_shades no
-gap_x 5
-gap_y 5
-maximum_width 330
-max_port_monitor_connections 64
-max_specials 512
-max_user_text 16384
-minimum_size 330 10
-net_avg_samples 2
-no_buffers yes
-out_to_console no
-wm_class_name Conky
-own_window_colour black
-own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
-own_window_transparent no
-own_window_type normal
-own_window yes
-own_window_class conky-semi
-own_window_argb_visual yes
-stippled_borders 2
-update_interval 2
-uppercase no
-use_spacer right
-use_xft yes
-xftalpha 0.8
-xftfont  Bitstream Vera Sans Mono:size=8
 
-TEXT
+conky.config = {
+    alignment = 'top_right',
+    background = true,
+    border_width = 1,
+    cpu_avg_samples = 2,
+    default_color = 'cornflowerblue',
+    default_outline_color = 'white',
+    default_shade_color = 'white',
+    double_buffer = true,
+    draw_borders = false,
+    draw_graph_borders = true,
+    draw_outline = false,
+    draw_shades = false,
+    gap_x = 5,
+    gap_y = 5,
+    maximum_width = 330,
+    max_port_monitor_connections = 64,
+    max_user_text = 16384,
+    net_avg_samples = 2,
+    no_buffers = true,
+    out_to_console = false,
+    wm_class_name = Conky,
+    own_window_colour = black,
+    own_window_hints = undecorated,below,sticky,skip_taskbar,skip_pager,
+    own_window_transparent = false,
+    own_window_type = normal,
+    own_window = true,
+    own_window_class = 'conky-semi',
+    own_window_argb_visual = true,
+    stippled_borders = 2,
+    update_interval = 2,
+    uppercase = false,
+    use_spacer = right,
+    use_xft = true,
+    xftalpha = 0.8,
+    font =  'Bitstream Vera Sans Mono:size=8'
+}
+
+conky.text = [[
 ${color #0077ff}$nodename     ${alignc}$sysname $kernel ${alignr}$color${time %H:%M}
 
 ${color #0077ff}Uptime:$color $uptime ${color #0077ff} Load:$color $loadavg
@@ -95,3 +96,4 @@ ${color #0077ff}${battery_bar 5,330 BAT1}
 ${color #0077ff}Time remaining: ${battery_time BAT1}$alignr${color #0077ff}${battery BAT1}
 
 ${color #0077ff}Desktop Name: $color ${desktop_name} ${alignr}${color #0077ff}Date:${color}${time %a %d %b %Y}
+]]
