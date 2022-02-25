@@ -59,7 +59,7 @@ pacman -S --noconfirm git sudo awesome conky picom rxvt-unicode urxvt-perls xsel
 
 echo -e "\n\tinstall base development utils\n"
 # development utils
-pacman -S --noconfirm gcc make cmake linux-headers perl python3 python-pip docker awk vim emacs
+pacman -S --noconfirm gcc make cmake linux-headers perl python3 python-pip docker docker-compose awk vim emacs chromium
 
 echo -e "\n\tinstall some fonts\n"
 pacman -S --noconfirm ttf-dejavu noto-fonts gnu-free-fonts ttf-anonymous-pro
