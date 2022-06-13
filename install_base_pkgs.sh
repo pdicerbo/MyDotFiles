@@ -64,6 +64,9 @@ pacman -S --noconfirm gcc make cmake linux-headers perl python3 python-pip docke
 echo -e "\n\tinstall some fonts\n"
 pacman -S --noconfirm ttf-dejavu noto-fonts gnu-free-fonts ttf-anonymous-pro
 
+echo -e "\n\tinstall audio utils\n"
+pacman -S --noconfirm pulseaudio pulseaudio-alsa pavucontrol
+
 echo -e "\n\tenabling/starting docker service\n"
 systemctl enable docker.service
 systemctl start  docker.service
