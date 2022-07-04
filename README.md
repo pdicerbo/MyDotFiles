@@ -29,7 +29,7 @@ INSTALL SCRIPTS USAGE
   - *arch-chroot /mnt /bin/bash*
 - at this point, install git, download this repository (maybe into the /srv folder.) and execute the base packages installation script:
   - *pacman -S git*
-  - *cd /srv && git clone https://github.com/pdicerbo/MyDotFiles.git*
+  - *cd /srv && git clone -b topic/ats_adapt https://github.com/pdicerbo/MyDotFiles.git*
   - *cd MyDotFiles*
   - *./install_base_pkgs.sh [username]*
 - the last script will generate a user called *pierluigi* if user_name is not provided; set the *root* and *username* password, then execute:
