@@ -3,7 +3,7 @@
 conky.config = {
     background = false,
     use_xft = true,
-    font = 'Sans:pixelsize=9',
+    font = 'DejaVu Sans Mono:pixelsize=9',
     xftalpha = 0.8,
     override_utf8_locale = true,
     update_interval = 1.0,
