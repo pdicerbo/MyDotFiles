@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# check if $1 is present and contains a number
+if [ -z $1 ]
+then
+    echo -e "\n  usage:\n\t$0 font_size\n"
+    exit 1
+fi
+
+re='^[0-9]+$'
+if ! [[ $1 =~ $re ]] ; then
+    echo -e "\n  usage:\n\t$0 font_size\n"
+    exit 1
+fi
+printf '\e]710;%s\007' "xft:DejaVu Sans Mono:size=$1"
