@@ -55,7 +55,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 echo -e "\n\tinstall base user utilities\n"
 # user utils
-pacman -S --noconfirm git sudo awesome conky picom rxvt-unicode urxvt-perls xsel numlockx archey3 wget inetutils
+pacman -S --noconfirm git sudo awesome conky picom rxvt-unicode urxvt-perls xsel numlockx archey3 wget inetutils alsa-utils
 
 echo -e "\n\tinstall base development utils\n"
 # development utils
