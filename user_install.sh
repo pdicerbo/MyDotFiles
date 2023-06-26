@@ -27,6 +27,12 @@ mkdir -p $HOME/.config/
 cp -r awesome $HOME/.config/
 cp picom.conf $HOME/.config/
 
+echo -e "\n\tinstalling Visual Studio Code...\n"
+vscode_upgrade
+
+echo -e "\n\tinstalling Google Chrome...\n"
+gchrome_upgrade
+
 cp -r conky $HOME/.config/conky_cfg
 
 echo -e "\n\tcleaning directories and exit\n"
