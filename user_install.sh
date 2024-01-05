@@ -35,8 +35,16 @@ gchrome_upgrade
 
 cp -r conky $HOME/.config/conky_cfg
 
+echo -e "\n\tinstalling some urxvt extensions..."
+
+cd $HOME
+mkdir -p $HOME/.urxvt/ext/
+git clone https://github.com/simmel/urxvt-resize-font.git
+
+mv urxvt-resize-font/resize-font $HOME/.urxvt/ext/
+
 echo -e "\n\tcleaning directories and exit\n"
 cd $HOME
-rm -rf MyDotFiles
+rm -rf MyDotFiles urxvt-resize-font
 echo -e "\n\tremember to remove the original repo folder!\n"
 
