@@ -1,82 +1,58 @@
 URxvt*depth: 32
-URxvt*background: [85]#000000
-URxvt*foreground: white
 URxvt*scrollBar: false
-Rxvt*font: xft:DejaVu Sans Mono:size=6
+URxvt.font: xft:DejaVu Sans Mono:size=6
 URxvt*termName: rxvt
 
 URxvt*letterSpace: -1
 URxvt*geometry:         185x55
 URxvt*saveLines:        1200
 URxvt*title : URxvt
-! URxvt*fading : 40
+URxvt.cursorBlink: 1
+URxvt.cursorUnderline: 1
 
-*background: #111111
-*foreground: #babdb6
 
-! Derp color scheme
-! Black
-*color0:   #111111
-*color8:   #666666
 
-! Red
-*color1:   rgb:d3/62/65
-*color9:   rgb:ef/81/71
+! color scheme adapted from /base16/google.dark
+! special
+URxvt.foreground:   #c5c8c6
+URxvt.background:   [85]#1d1f21
+URxvt.cursorColor:  #c5c8c6
 
-! Green
-*color2:   #aece91
-*color10:  #cfefb3
+! black
+URxvt.color0:       #1d1f21
+URxvt.color8:       #969896
 
-! Yellow
-*color3:   rgb:e7/e1/8c
-*color11:  rgb:ff/f7/96
+! red
+URxvt.color1:       #cc5d56
+URxvt.color9:       #cc2117
 
-! Blue
-*color4:   #5297cf
-*color12:  #74b8ef
+! green
+URxvt.color2:       #42885d
+URxvt.color10:      #078820
 
-! Magenta
-*color5:   #963c59
-*color13:  #b85e7b
+! yellow
+URxvt.color3:       #fba268
+URxvt.color11:      #fb6f14
 
-! Cyan
-*color6:   #5E7175
-*color14:  #A3BABF
+! blue
+URxvt.color4:       #5081ed
+URxvt.color12:      #175aed
 
-! White
-*color7:   #bebebe
-*color15:  #ffffff
+! magenta
+URxvt.color5:       #ab7ec7
+URxvt.color13:      #8316c7
 
-! tangoesque scheme
-! Black (not tango) + DarkGrey
-! *color0:  #000000
-! *color8:  #555753
-! ! DarkRed + Red
-! *color1:  #ff6565
-! *color9:  #ff8d8d
-! ! DarkGreen + Green
-! *color2:  #93d44f
-! *color10: #c8e7a8
-! ! DarkYellow + Yellow
-! *color3:  #eab93d
-! *color11: #ffc123
-! ! DarkBlue + Blue
-! *color4:  #204a87
-! *color12: #3465a4
-! ! DarkMagenta + Magenta
-! *color5:  #ce5c00
-! *color13: #f57900
-! !DarkCyan + Cyan (both not tango)
-! *color6:  #89b6e2
-! *color14: #46a4ff
-! ! LightGrey + White
-! *color7:  #cccccc
-! *color15: #ffffff
+! cyan
+URxvt.color6:       #49cced
+URxvt.color14:      #0b70ed
 
-! xterm color scheme
-! URxvt*color12: rgb:5c/5c/ff
+! white
+URxvt.color7:       #bec8c1
+URxvt.color15:      #aad0ff
 
-URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select,fullscreen,selection-to-clipboard
+
+URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select,fullscreen,selection-to-clipboard,resize-font
+URxvt.resize-font.step: 1
 URxvt.url-select.launcher:  chromium
 URxvt.matcher.button: 1
 URxvt.url-select.underline: true
@@ -86,8 +62,6 @@ URxvt.keysym.M-s:           perl:keyboard-select:search
 URxvt.iso14755: False		
 URxvt.clipboard.copycmd:  xsel -i -b
 URxvt.clipboard.pastecmd: xsel -o -b
-! URxvt.keysym.Shift-Control-C: perl:clipboard:copy
-! URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 URxvt.keysym.C-C: perl:clipboard:copy
 URxvt.keysym.C-V: perl:clipboard:paste
 URxvt.keysym.C-A-V: perl:clipboard:paste_escaped
@@ -95,6 +69,12 @@ URxvt.keysym.C-A-V: perl:clipboard:paste_escaped
 URxvt.clipboard.autocopy: true
 URxvt.keysym.M-c: perl:clipboard:copy
 URxvt.keysym.M-v: perl:clipboard:paste
+
+URxvt.keysym.C-minus:     resize-font:smaller
+! URxvt.keysym.C-plus:      resize-font:bigger ! C-plus not working...
+URxvt.keysym.C-P:         resize-font:bigger
+URxvt.keysym.C-equal:     resize-font:reset
+URxvt.keysym.C-question:  resize-font:show
 
 URxvt.secondaryScreen: 1
 URxvt.secondaryScroll: 0
