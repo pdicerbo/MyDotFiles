@@ -32,10 +32,4 @@ fi
 
 # setxkbmap -option compose:rwin
 
-if [ -z "$FIRST_ACCESS" ]; then
-    # exporting variables only at the first access
-    export FIRST_ACCESS="true"
-    export PATH=$PATH:$HOME/.scripts
-fi
-
 archey3
