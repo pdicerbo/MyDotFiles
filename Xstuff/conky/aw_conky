@@ -74,7 +74,7 @@ ${alignr}$font < ${diskiograph 7,120 8b2132 fe860} > -─┘    │    │
 ${alignr}$font ram -─┤    │  
 ${alignr}$font < $memperc% > used -─┤    │    │  
 ${alignr}$font < $mem/$memmax > -─┘    │    │    │  
-${alignr}$font < ${memgraph 0 7,120 8b2132 fe860} > -─┘    │    │    │  
+${alignr}$font < ${memgraph 7,120 8b2132 fe860} > -─┘    │    │    │  
 ${alignr}$font < ${top_mem name 1}  ${top_mem mem 1} > -─┤    │    │  
 ${alignr}$font < ${top_mem name 2}  ${top_mem mem 2} > -─┤    │    │  
 ${alignr}$font < ${top_mem name 3}  ${top_mem mem 3} > -─┤    │    │  
