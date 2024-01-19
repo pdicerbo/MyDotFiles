@@ -19,7 +19,7 @@ URxvt.background:   [85]#1d1f21
 URxvt.cursorColor:  #c5c8c6
 
 ! black
-URxvt.color0:       #1d1f21
+URxvt.color0:       #1c1e21
 URxvt.color8:       #969896
 
 ! red
@@ -28,7 +28,7 @@ URxvt.color9:       #cc2117
 
 ! green
 URxvt.color2:       #42885d
-URxvt.color10:      #078820
+URxvt.color10:      #04a122
 
 ! yellow
 URxvt.color3:       #fba268
@@ -39,16 +39,16 @@ URxvt.color4:       #5081ed
 URxvt.color12:      #175aed
 
 ! magenta
-URxvt.color5:       #ab7ec7
-URxvt.color13:      #8316c7
+URxvt.color5:       #4890c7
+URxvt.color13:      #0b69c7
 
 ! cyan
 URxvt.color6:       #49cced
-URxvt.color14:      #0b70ed
+URxvt.color14:      #0b9ded
 
 ! white
-URxvt.color7:       #bec8c1
-URxvt.color15:      #aad0ff
+URxvt.color7:       #95b6c8
+URxvt.color15:      #bbd9ff
 
 
 URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select,fullscreen,selection-to-clipboard,resize-font
