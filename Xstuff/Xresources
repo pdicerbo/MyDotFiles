@@ -1,11 +1,11 @@
 URxvt*depth: 32
 URxvt*scrollBar: false
-URxvt.font: xft:DejaVu Sans Mono:size=6
+URxvt.font: xft:DejaVuSansM Nerd Font:size=6
 URxvt*termName: rxvt
 
 URxvt*letterSpace: -1
 URxvt*geometry:         185x55
-URxvt*saveLines:        1200
+URxvt*saveLines:        2000
 URxvt*title : URxvt
 URxvt.cursorBlink: 1
 URxvt.cursorUnderline: 1
