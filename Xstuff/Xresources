@@ -11,11 +11,9 @@ URxvt.cursorBlink: 1
 URxvt.cursorUnderline: 1
 
 
-
-! color scheme adapted from /base16/google.dark
 ! special
 URxvt.foreground:   #c5c8c6
-URxvt.background:   [85]#1d1f21
+URxvt.background:   [85]#111315
 URxvt.cursorColor:  #c5c8c6
 
 ! black
@@ -24,31 +22,31 @@ URxvt.color8:       #969896
 
 ! red
 URxvt.color1:       #cc5d56
-URxvt.color9:       #cc2117
+URxvt.color9:       #cc160b
 
 ! green
 URxvt.color2:       #42885d
-URxvt.color10:      #04a122
+URxvt.color10:      #07a124
 
 ! yellow
 URxvt.color3:       #fba268
-URxvt.color11:      #fb6f14
+URxvt.color11:      #fb6300
 
 ! blue
 URxvt.color4:       #5081ed
 URxvt.color12:      #175aed
 
 ! magenta
-URxvt.color5:       #4890c7
+URxvt.color5:       #3b8fcf
 URxvt.color13:      #0b69c7
 
 ! cyan
-URxvt.color6:       #49cced
+URxvt.color6:       #00bae9
 URxvt.color14:      #0b9ded
 
 ! white
 URxvt.color7:       #95b6c8
-URxvt.color15:      #bbd9ff
+URxvt.color15:      #add1ff
 
 
 URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select,fullscreen,selection-to-clipboard,resize-font
