@@ -14,7 +14,7 @@ URxvt.cursorUnderline: 1
 ! special
 URxvt.foreground:   #c5c8c6
 URxvt.background:   [85]#111315
-URxvt.cursorColor:  #c5c8c6
+URxvt.cursorColor:  #0B9DED
 
 ! black
 URxvt.color0:       #1c1e21
