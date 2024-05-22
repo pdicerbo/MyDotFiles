@@ -1,0 +1,39 @@
+#!/bin/bash
+
+mkdir -p $HOME/Downloads
+cd $HOME/Downloads
+
+# download latest available version
+wget https://aur.archlinux.org/cgit/aur.git/snapshot/archey4.tar.gz
+
+# unpack downloaded package
+tar xzf archey4.tar.gz
+
+if [ ! -d archey4 ]
+then
+    echo -e "something wrong happens during package decompression\nexit.."
+    exit 42
+fi
+
+cd archey4
+
+# build package
+makepkg -s --noconfirm
+
+if [ ! -f archey4*.pkg.tar.zst ]
+then
+    echo -e "something wrong happens during package construction\nexit.."
+    exit 42
+fi
+
+# install package
+sudo pacman --noconfirm -U archey4*.pkg.tar.zst || {
+    echo -e "invalid or corrupted package (or wrong password inserted for three times...)\nexit"
+    exit 42
+}
+
+cd ..
+
+# cleaning...
+echo -e "\n removing compressed package and build folder"
+rm -rf archey4*

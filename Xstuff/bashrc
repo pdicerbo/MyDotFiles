@@ -25,11 +25,11 @@ if [ -f /usr/share/git/completion/git-prompt.sh ]; then
     PS1='\[\e[;36m\]┌──(\[\e[1;34m\]\u@\h\[\e[;36m\])-[\[\e[;35m\]\w\[\e[;36m\]]\[\e[;36m\]$(__git_ps1 "─[\[\e[1;34m\]%s\[\e[;36m\]]")\n\[\e[;36m\]└─\[\e[1;37m\]>\[\e[0m\] '
 
 else
-    
+
     PS1='\[\e[;36m\]┌──(\[\e[1;34m\]\u@\h\[\e[;36m\])-[\[\e[;35m\]\w\[\e[;36m\]]\n\[\e[;36m\]└─\[\e[1;37m\]>\[\e[0m\] '
-    
+
 fi
 
 # setxkbmap -option compose:rwin
 
-archey3
+archey

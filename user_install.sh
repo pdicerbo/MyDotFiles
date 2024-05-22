@@ -33,6 +33,9 @@ vscode_upgrade
 echo -e "\n\tinstalling Google Chrome...\n"
 gchrome_upgrade
 
+echo -e "\n\tinstalling Archey...\n"
+archey_upgrade
+
 cp -r conky $HOME/.config/conky_cfg
 
 echo -e "\n\tinstalling some urxvt extensions..."
