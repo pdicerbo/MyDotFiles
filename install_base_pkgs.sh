@@ -55,7 +55,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 echo -e "\n\tinstall base user utilities\n"
 # user utils
-pacman -S --noconfirm git sudo awesome conky picom rxvt-unicode urxvt-perls xsel numlockx archey3 wget inetutils
+pacman -S --noconfirm git sudo awesome conky picom rxvt-unicode urxvt-perls xsel numlockx wget inetutils bind-tools
 
 echo -e "\n\tinstall base development utils\n"
 # development utils
@@ -96,13 +96,11 @@ useradd -m --groups root,wheel,docker $input_user
 
 echo -e "$input_user ALL=(ALL) NOPASSWD:ALL\n" > /etc/sudoers.d/$input_user
 
-archey3
-
 echo -e "\n\tadd basic user utilities to root user\n"
 ./user_install.sh
 
 cp Xstuff/root_bashrc $HOME/.bashrc
-sed -i 's/color = blue/color = red/' $HOME/.archey3.cfg
+# sed -i 's/color = blue/color = red/' $HOME/.archey3.cfg
 cp Xstuff/10-monitor.conf   /etc/X11/xorg.conf.d/
 cp Xstuff/20-synaptics.conf /etc/X11/xorg.conf.d/
 
