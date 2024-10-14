@@ -7,6 +7,8 @@ fi
 
 echo -e "\n\tinit operations\n"
 
+set -ex
+
 # set localtime
 ln -sf /usr/share/zoneinfo/Europe/Rome /etc/localtime
 hwclock --systohc --utc
@@ -29,7 +31,7 @@ echo "::1         localhost" >> /etc/hosts
 echo "127.0.1.1   ArchLinux.localdomain	ArchLinux" >> /etc/hosts
 
 # adjust time
-timedatectl set-ntp true
+# timedatectl set-ntp true
 
 echo -e "\n\tbase system upgrade\n"
 # upgrade the system
@@ -89,6 +91,10 @@ else
     echo -e "\n\tcontinue with default installation\n"
 fi
 
+echo -e "\n\tenabling systemd-resolved.service at startup\n"
+systemctl enable systemd-resolved.service
+systemctl start  systemd-resolved.service
+
 input_user=$1
 
 echo -e "\n\tadd new user $input_user\n"
@@ -97,12 +103,18 @@ useradd -m --groups root,wheel,docker $input_user
 echo -e "$input_user ALL=(ALL) NOPASSWD:ALL\n" > /etc/sudoers.d/$input_user
 
 echo -e "\n\tadd basic user utilities to root user\n"
-echo "ROOT" | xargs ./user_install.sh
+./user_install.sh "ROOT"
 
 cp Xstuff/root_bashrc $HOME/.bashrc
 # sed -i 's/color = blue/color = red/' $HOME/.archey3.cfg
 cp Xstuff/10-monitor.conf   /etc/X11/xorg.conf.d/
 # cp Xstuff/20-synaptics.conf /etc/X11/xorg.conf.d/
+
+echo -e "\n\tdowngrading picom (they broke something...)...\n"
+pacman -U --noconfirm file://${PWD}/Xstuff/picom-11.2-1-x86_64.pkg.tar.zst
+
+# Use sed to find the line containing 'IgnorePkg' and replace it with the picom package
+sed -i '/#IgnorePkg/c\IgnorePkg = picom' /etc/pacman.conf
 
 if [[ $2 -eq "vbox" ]] ; then
     echo -e "\n\tadopting the default netctl profile for wired connection..\n"
@@ -110,6 +122,7 @@ if [[ $2 -eq "vbox" ]] ; then
     cp examples/ethernet-dhcp .
     sed -i 's/Interface=eth0/Interface=enp0s3/' ethernet-dhcp
     netctl enable ethernet-dhcp
+    cd -
 else
     echo -e "\n\tremember to copy a valid netctl profile for wireless connection and enable it.."
 fi
