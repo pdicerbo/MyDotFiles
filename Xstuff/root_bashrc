@@ -30,10 +30,4 @@ else
 
 fi
 
-if [ -z "$ROOT_FIRST_ACCESS" ]; then
-    # exporting variables only at the first access
-    export ROOT_FIRST_ACCES="true"
-    export PATH=$PATH:$HOME/.scripts
-fi
-
 archey

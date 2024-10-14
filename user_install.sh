@@ -2,8 +2,10 @@
 
 echo -e "\n\tfinalizing new user environment\n"
 
+set -ex
+
 cd $HOME
-git clone https://github.com/pdicerbo/MyDotFiles.git
+git clone -b https://github.com/pdicerbo/MyDotFiles.git
 
 echo -e "\n\tbase utils files adopted\n"
 cd MyDotFiles
@@ -11,6 +13,12 @@ cp gitconfig $HOME/.gitconfig
 
 mkdir -p $HOME/.scripts
 cp scripts/* $HOME/.scripts/
+
+export PATH=$PATH:$HOME/.scripts
+
+if [[ $# -eq 1 ]] ; then
+    rm -f $HOME/.scripts/change_username
+fi
 
 cd Xstuff
 cp bashrc $HOME/.bashrc
@@ -22,6 +30,14 @@ echo -e "\n\tadopting awesome and conky cfg files..\n"
 mkdir -p $HOME/.config/
 cp -r awesome $HOME/.config/
 cp picom.conf $HOME/.config/
+cp -r conky $HOME/.config/conky_cfg
+cp -r archey4 $HOME/.config/
+
+if [[ $# -eq 1 ]] ; then
+    cd $HOME
+    rm -rf MyDotFiles
+    exit 0  # the final user is expected to install the other packages
+fi
 
 echo -e "\n\tinstalling Visual Studio Code...\n"
 vscode_upgrade
@@ -30,9 +46,7 @@ echo -e "\n\tinstalling Google Chrome...\n"
 gchrome_upgrade
 
 echo -e "\n\tinstalling Archey...\n"
-archey_upgrade
-
-cp -r conky $HOME/.config/conky_cfg
+archey4_upgrade
 
 echo -e "\n\tinstalling some urxvt extensions..."
 

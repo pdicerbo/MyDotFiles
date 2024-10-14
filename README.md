@@ -31,7 +31,7 @@ INSTALL SCRIPTS USAGE
   - *pacman -S git*
   - *cd /srv && git clone https://github.com/pdicerbo/MyDotFiles.git*
   - *cd MyDotFiles*
-  - *./install_base_pkgs.sh [username]*
+  - *./install_base_pkgs.sh [username] [vbox]*
 - the last script will generate a user called *pierluigi* if user_name is not provided; set the *root* and *username* password, then execute:
   - *su username*
   - *./user_install.sh*
