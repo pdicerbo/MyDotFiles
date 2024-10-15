@@ -56,7 +56,8 @@ git clone https://github.com/simmel/urxvt-resize-font.git
 
 mv urxvt-resize-font/resize-font $HOME/.urxvt/ext/
 
-LINK_FOLDER_ROOT=$HOME
+# create a link to the shared folder in the $HOME/Desktop
+LINK_FOLDER_ROOT=$HOME/Desktop
 echo -e "\n\tcreating link to shared folder into $LINK_FOLDER_ROOT\n"
 mkdir -p $LINK_FOLDER_ROOT
 ln -s /media/sf_shared $LINK_FOLDER_ROOT/shared
