@@ -5,7 +5,7 @@ echo -e "\n\tfinalizing new user environment\n"
 set -ex
 
 cd $HOME
-git clone -b topic/ats_adapt https://github.com/pdicerbo/MyDotFiles.git
+git clone -b topic/ats https://github.com/pdicerbo/MyDotFiles.git
 
 echo -e "\n\tbase utils files adopted\n"
 cd MyDotFiles
