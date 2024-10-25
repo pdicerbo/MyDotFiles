@@ -1,0 +1,2 @@
+#!/bin/bash
+tdrop -ma -w 100% -y 0 -x 0 -h 30% urxvt 2> /tmp/tdrop_err.log

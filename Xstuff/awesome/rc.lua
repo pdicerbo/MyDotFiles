@@ -82,7 +82,7 @@ local modkey       = "Mod4"
 local terminal     = "urxvt"
 local editor       = "emacs -nw" -- os.getenv("EDITOR") or "nano"
 local gui_editor   = "gvim"
-local browser      = "firefox"
+local browser      = "google-chrome-stable"
 local guieditor    = "code"
 
 awful.util.terminal = terminal
@@ -90,10 +90,12 @@ awful.util.terminal = terminal
 awful.util.tagnames = {'⌘', '♐', '⌥', 'ℵ', '⌥', '⌤', '⚡ '}
 awful.layout.layouts = {
     awful.layout.suit.floating,
+    awful.layout.suit.floating,
+    awful.layout.suit.floating,
     awful.layout.suit.tile,
     awful.layout.suit.tile.left,
-    awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
+    -- awful.layout.suit.tile.bottom,
+    -- awful.layout.suit.tile.top,
     --awful.layout.suit.fair,
     --awful.layout.suit.fair.horizontal,
     --awful.layout.suit.spiral,
@@ -375,6 +377,8 @@ globalkeys = awful.util.table.join(
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
+    awful.key({ modkey }, "d", function () awful.spawn.with_shell("toggle_tdrop") end,
+          {description = "toggle urxvt dropdown terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
@@ -427,19 +431,19 @@ globalkeys = awful.util.table.join(
               {description = "-10%", group = "hotkeys"}),
 
     -- ALSA volume control
-    awful.key({ "Control", "Shift" }, "+",
+    awful.key({ }, "XF86AudioRaiseVolume",
         function ()
             os.execute(string.format("amixer -q set %s 1%%+", beautiful.volume.channel))
             beautiful.volume.update()
         end,
         {description = "volume up", group = "hotkeys"}),
-    awful.key({ "Control", "Shift" }, "-",
+    awful.key({ }, "XF86AudioLowerVolume",
         function ()
             os.execute(string.format("amixer -q set %s 1%%-", beautiful.volume.channel))
             beautiful.volume.update()
         end,
         {description = "volume down", group = "hotkeys"}),
-    awful.key({ "Control", "Shift" }, "m",
+    awful.key({ }, "XF86AudioMute",
         function ()
             os.execute(string.format("amixer -q set %s toggle", beautiful.volume.togglechannel or beautiful.volume.channel))
             beautiful.volume.update()

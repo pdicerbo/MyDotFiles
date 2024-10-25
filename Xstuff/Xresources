@@ -69,8 +69,7 @@ URxvt.keysym.M-c: perl:clipboard:copy
 URxvt.keysym.M-v: perl:clipboard:paste
 
 URxvt.keysym.C-minus:     resize-font:smaller
-! URxvt.keysym.C-plus:      resize-font:bigger ! C-plus not working...
-URxvt.keysym.C-P:         resize-font:bigger
+URxvt.keysym.C-plus:      resize-font:bigger
 URxvt.keysym.C-equal:     resize-font:reset
 URxvt.keysym.C-question:  resize-font:show
 
