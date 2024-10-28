@@ -1,0 +1,16 @@
+#!/bin/bash
+
+xrandr --output VGA-1 --mode 1920x1080
+
+sed -i "s/font = 'DejaVu Sans Mono:pixelsize=14'/font = 'DejaVu Sans Mono:pixelsize=9'/" "$HOME/.config/conky_cfg/aw_conky"
+$HOME/.scripts/restart_conky
+
+sed -i "s/Font:size=10/Font:size=6/" "$HOME/.Xresources"
+xrdb -merge $HOME/.Xresources
+
+sed -i "s/Envy Code R 11/Envy Code R 8/" "$HOME/.config/awesome/themes/zenburn/theme.lua"
+sed -i "s/theme.menu_height = 20/theme.menu_height = 15/" "$HOME/.config/awesome/themes/zenburn/theme.lua"
+sed -i "s/theme.menu_width  = 150/theme.menu_width  = 140/" "$HOME/.config/awesome/themes/zenburn/theme.lua"
+sed -i "s/s.mywibox = awful.wibar({ position = \"top\", screen = s, height = 28, bg = theme.bg_normal, fg = theme.fg_normal })/s.mywibox = awful.wibar({ position = \"top\", screen = s, height = 18, bg = theme.bg_normal, fg = theme.fg_normal })/" "$HOME/.config/awesome/themes/zenburn/theme.lua"
+
+awesome-client 'awesome.restart()'

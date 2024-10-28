@@ -30,7 +30,7 @@ conky.config = {
     cpu_avg_samples = 2,
     net_avg_samples = 2,
     use_spacer = 'right',
-    maximum_width = 350
+    maximum_width = 450
 }
 
 
