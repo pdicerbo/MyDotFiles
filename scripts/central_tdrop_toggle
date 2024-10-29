@@ -1,0 +1,3 @@
+#!/bin/bash
+# tdrop -ma -w 75% -y 0 -x 450 -h 30% urxvt 2> /tmp/central_tdrop_err.log
+tdrop -ma --wm awesome -w 75% -y 0 -x 450 -h 38% urxvt 2> /tmp/central_tdrop_err.log

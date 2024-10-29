@@ -1,0 +1,23 @@
+set -e
+
+echo "copying scripts.."
+cp scripts/* $HOME/.scripts
+
+echo "scripts copied; copying conky config.."
+cp Xstuff/conky/aw_conky $HOME/.config/conky_cfg/aw_conky
+echo "conky config copied; copying awesome config.."
+
+cp Xstuff/awesome/rc.lua $HOME/.config/awesome/rc.lua
+cp Xstuff/awesome/themes/zenburn/theme.lua $HOME/.config/awesome/themes/zenburn/theme.lua
+
+echo "awesome config copied; copying bashrc.."
+cp Xstuff/bashrc $HOME/.bashrc
+cp Xstuff/bash_profile $HOME/.bash_profile
+echo "bashrc copied; copying xinitrc.."
+cp Xstuff/xinitrc $HOME/.xinitrc
+
+echo "xinitrc copied; copying Xresources.."\
+cp Xstuff/Xresources $HOME/.Xresources
+
+echo "Xresources copied; copying archey config.."\
+cp Xstuff/archey4/config.json $HOME/.config/archey4/config.json
