@@ -78,3 +78,5 @@ URxvt.secondaryScroll: 0
 URxvt.secondaryWheel: 1
 
 URxvt.keysym.F11: perl:fullscreen:switch
+URxvt.pointerShape: xterm
+Xcursor.size: 10
