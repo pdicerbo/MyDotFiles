@@ -1,6 +1,6 @@
 URxvt*depth: 32
 URxvt*scrollBar: false
-URxvt.font: xft:DejaVuSansM Nerd Font:size=6
+URxvt.font: xft:DejaVuSansM Nerd Font:size=9
 URxvt*termName: rxvt
 
 URxvt*letterSpace: -1
