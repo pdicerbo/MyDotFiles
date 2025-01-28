@@ -92,8 +92,9 @@ awful.layout.layouts = {
     awful.layout.suit.floating,
     awful.layout.suit.floating,
     awful.layout.suit.floating,
+    awful.layout.suit.floating,
     awful.layout.suit.tile,
-    awful.layout.suit.tile.left,
+    -- awful.layout.suit.tile.left,
     -- awful.layout.suit.tile.bottom,
     -- awful.layout.suit.tile.top,
     --awful.layout.suit.fair,
@@ -259,6 +260,22 @@ root.buttons(awful.util.table.join(
 ))
 -- }}}
 
+-- Define the function to start the terminal with tmux
+local function start_terminal_with_tmux()
+    local screen = awful.screen.focused()
+    local target_tag = screen.tags[4]  -- Change the index to the desired tag number
+    if target_tag then
+        awful.spawn("urxvt -geometry 350x100 -e tmux new-session \\; source-file /home/pierluigi/.config/tmux/monitor_session", {
+            floating  = true,
+            tag       = target_tag,
+            placement = awful.placement.centered,
+        })
+    end
+end
+
+-- Call the function on startup
+start_terminal_with_tmux()
+
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
     -- Take a screenshot
@@ -377,8 +394,8 @@ globalkeys = awful.util.table.join(
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
-    awful.key({ modkey }, "x", function () awful.spawn.with_shell("toggle_tdrop") end,
-          {description = "toggle urxvt dropdown terminal", group = "launcher"}),
+    awful.key({ modkey }, "x", function () awful.spawn("urxvt -geometry 350x100 -e tmux", { floating  = true, placement = awful.placement.centered, }) end,
+          {description = "open a tmux session into a bigger urxvt terminal", group = "launcher"}),
     awful.key({ modkey, "Shift" }, "x", function () awful.spawn.with_shell("central_tdrop_toggle") end,
           {description = "toggle centralized urxvt dropdown terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,

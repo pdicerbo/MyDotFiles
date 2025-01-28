@@ -1,0 +1,41 @@
+unbind C-b
+set -g prefix C-Space
+bind C-Space send-prefix
+
+set -g base-index 1
+setw -g pane-base-index 1
+set -g renumber-windows on
+
+set -g mouse off
+
+# Status line colors
+set -g status-bg "color4"         # blue background
+set -g status-fg "color7"         # gray text color
+set -g status-right "%l:%M %p"    # time format
+set-window-option -g window-status-current-style "bg=color75,fg=color231 bold"    # current window background + foreground colors
+
+# Custom Keys
+bind-key "|" split-window -h -c "#{pane_current_path}"
+bind-key "\\" split-window -fh -c "#{pane_current_path}"
+
+bind-key "-" split-window -v -c "#{pane_current_path}"
+bind-key "_" split-window -fv -c "#{pane_current_path}"
+
+bind-key k kill-session
+bind-key K kill-server
+
+new
+neww   -n monitor btop
+splitw -h -p 30 sudo iotop -o
+splitw -fv atop
+splitw -h -p 30 sudo iftop
+
+kill-window -t :1
+
+# splitw -v ctop
+# splitw -h cmatrix -C blue -b
+
+# urxvt -geometry 350x100 -e tmux new-session \; source-file ~/.config/tmux/monitor_session
+# xfce4-terminal --geometry 380x100 -x tmux new-session \; source-file ~/.config/tmux/monitor_session
+
+
