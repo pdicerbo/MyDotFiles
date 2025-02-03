@@ -29,13 +29,8 @@ neww   -n monitor btop
 splitw -h -p 30 sudo iotop -o
 splitw -fv atop
 splitw -h -p 30 sudo iftop
+select-pane -t 1
 
 kill-window -t :1
-
-# splitw -v ctop
-# splitw -h cmatrix -C blue -b
-
-# urxvt -geometry 350x100 -e tmux new-session \; source-file ~/.config/tmux/monitor_session
-# xfce4-terminal --geometry 380x100 -x tmux new-session \; source-file ~/.config/tmux/monitor_session
 
 
