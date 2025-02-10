@@ -17,7 +17,7 @@ ContainerId=`docker ps -a | awk -v env_var="$extract_line" 'NR==env_var' | awk '
 # container id check
 if [ ! -z "$ContainerId" ]
 then
-    echo -e "\n\tOpening bash hell into container id [$ContainerId]\n"
+    echo -e "\n\tOpening bash shell into container id [$ContainerId]\n"
 else
     echo -e "\n\tcannot extract a valid container id from line $1\n"
     exit 1
