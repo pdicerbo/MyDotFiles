@@ -71,7 +71,7 @@ pacman -S --noconfirm  ctop dive bat btop atop iftop
 pacman -S --noconfirm ksnip poppler
 
 echo -e "\n\tinstall some fonts\n"
-pacman -S --noconfirm ttf-dejavu ttf-dejavu-nerd ttf-nerd-fonts-symbols noto-fonts gnu-free-fonts ttf-anonymous-pro
+pacman -S --noconfirm ttf-dejavu ttf-dejavu-nerd ttf-nerd-fonts-symbols noto-fonts gnu-free-fonts ttf-anonymous-pro ttf-jetbrains-mono
 
 echo -e "\n\tinstall audio utils\n"
 pacman -S --noconfirm alsa-utils pulseaudio pulseaudio-alsa pavucontrol
