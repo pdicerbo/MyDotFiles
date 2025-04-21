@@ -40,3 +40,9 @@ INSTALL SCRIPTS USAGE
   - adopt the correct interface name (exec *netctl enable my_profile* to attempt the connection at every startup)
   - *exit*
   - *umount -R /mnt*
+
+AUR packages to be installed after a fresh installation
+------------
+
+- [cppman](https://aur.archlinux.org/packages/cppman)
+- [luajit](https://aur.archlinux.org/packages/luajit-tiktoken-bin)

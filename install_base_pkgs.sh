@@ -61,17 +61,20 @@ pacman -S --noconfirm git sudo awesome conky picom rxvt-unicode urxvt-perls xsel
 
 echo -e "\n\tinstall base development utils\n"
 # development utils
-pacman -S --noconfirm gcc make cmake linux-headers perl python3 python-pip docker docker-compose awk vim emacs tmux tldr fzf ncdu
+pacman -S --noconfirm gcc make cmake linux-headers perl python3 python-pip docker docker-compose awk vim tmux tldr fzf ncdu neovim
 
 echo -e "\n\tinstall some other utilities\n"
 # monitor utils
 pacman -S --noconfirm  ctop dive bat btop atop iftop
 
+# neovime utils
+pacman -S --noconfirm ripgrep fd luarocks nodejs
+
 # image & pdf utils
 pacman -S --noconfirm ksnip poppler
 
 echo -e "\n\tinstall some fonts\n"
-pacman -S --noconfirm ttf-dejavu ttf-dejavu-nerd ttf-nerd-fonts-symbols noto-fonts gnu-free-fonts ttf-anonymous-pro ttf-jetbrains-mono
+pacman -S --noconfirm ttf-dejavu ttf-dejavu-nerd ttf-nerd-fonts-symbols noto-fonts gnu-free-fonts ttf-anonymous-pro ttf-jetbrains-mono-nerd
 
 echo -e "\n\tinstall audio utils\n"
 pacman -S --noconfirm alsa-utils pulseaudio pulseaudio-alsa pavucontrol
