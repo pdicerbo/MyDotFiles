@@ -57,18 +57,18 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 echo -e "\n\tinstall base user utilities\n"
 # user utils
-pacman -S --noconfirm git sudo awesome conky picom rxvt-unicode urxvt-perls xsel numlockx wget inetutils bind-tools
+pacman -S --noconfirm git sudo awesome conky picom rxvt-unicode urxvt-perls xsel numlockx wget inetutils bind-tools alacritty
 
 echo -e "\n\tinstall base development utils\n"
 # development utils
-pacman -S --noconfirm gcc make cmake linux-headers perl python3 python-pip docker docker-compose awk vim tmux tldr fzf ncdu neovim
+pacman -S --noconfirm gcc clang make cmake linux-headers perl python3 python-pip docker docker-compose awk vim tmux tldr fzf ncdu neovim
 
 echo -e "\n\tinstall some other utilities\n"
 # monitor utils
-pacman -S --noconfirm  ctop dive bat btop atop iftop
+pacman -S --noconfirm  ctop dive bat btop atop iftop procs glances
 
 # neovime utils
-pacman -S --noconfirm ripgrep fd luarocks nodejs
+pacman -S --noconfirm ripgrep fd luarocks nodejs npm lazygit lynx
 
 # image & pdf utils
 pacman -S --noconfirm ksnip poppler
