@@ -37,14 +37,6 @@ echo -e "\n\tbase system upgrade\n"
 # upgrade the system
 pacman -Suy --noconfirm
 
-echo -e "\n\tinstall X server packages\n"
-# install X server
-pacman -S --noconfirm xorg xorg-server xorg-apps
-
-echo -e "\n\tinstall xfce-4 DE\n"
-# install xfce-4 DE
-pacman -S --noconfirm xfce4 xfce4-goodies
-
 echo -e "\n\tinstall network utilities\n"
 pacman -S --noconfirm iw wpa_supplicant dialog dhcpcd netctl openssh
 
@@ -55,29 +47,30 @@ grub-install --target=i386-pc /dev/sda
 sed -i 's/ quiet//' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
+echo -e "\n\tinstall hyprland-related packages\n"
+# install hyprland stuff
+pacman -S --noconfirm hyprland waybar pipewire wireplumber foot foot-terminfo swaync xdg-desktop-portal-hyprland hyprpolkitagent qt5-wayland qt6-wayland hyprpaper wofi hyprpicker cliphist dolphin hypridle hyprlock hyprshot
+
 echo -e "\n\tinstall base user utilities\n"
 # user utils
-pacman -S --noconfirm git sudo awesome conky picom rxvt-unicode urxvt-perls xsel numlockx wget inetutils bind-tools alacritty
+pacman -S --noconfirm git sudo wget inetutils bind alacritty
 
 echo -e "\n\tinstall base development utils\n"
 # development utils
-pacman -S --noconfirm gcc clang make cmake linux-headers perl python3 python-pip docker docker-compose awk vim tmux tldr fzf ncdu neovim
+pacman -S --noconfirm gcc clang make cmake linux-headers perl python3 python-pip docker awk vim tmux tldr fzf ncdu neovim
 
 echo -e "\n\tinstall some other utilities\n"
 # monitor utils
-pacman -S --noconfirm  ctop dive bat btop atop iftop procs glances
+pacman -S --noconfirm ctop dive bat btop atop iftop procs glances fastfetch
 
-# neovime utils
+# neovim utils
 pacman -S --noconfirm ripgrep fd luarocks nodejs npm lazygit lynx
 
-# image & pdf utils
-pacman -S --noconfirm ksnip poppler
+# pdf utils
+pacman -S --noconfirm poppler
 
 echo -e "\n\tinstall some fonts\n"
-pacman -S --noconfirm ttf-dejavu ttf-dejavu-nerd ttf-nerd-fonts-symbols noto-fonts gnu-free-fonts ttf-anonymous-pro ttf-jetbrains-mono-nerd
-
-echo -e "\n\tinstall audio utils\n"
-pacman -S --noconfirm alsa-utils pulseaudio pulseaudio-alsa pavucontrol
+pacman -S --noconfirm ttf-dejavu ttf-dejavu-nerd ttf-nerd-fonts-symbols noto-fonts gnu-free-fonts ttf-anonymous-pro ttf-jetbrains-mono-nerd ttf-font-awesome
 
 echo -e "\n\tenabling/starting docker service\n"
 systemctl enable docker.service
@@ -112,15 +105,6 @@ echo -e "\n\tadd basic user utilities to root user\n"
 ./user_install.sh "ROOT"
 
 cp Xstuff/root_bashrc $HOME/.bashrc
-# sed -i 's/color = blue/color = red/' $HOME/.archey3.cfg
-cp Xstuff/10-monitor.conf   /etc/X11/xorg.conf.d/
-cp Xstuff/20-synaptics.conf /etc/X11/xorg.conf.d/
-
-echo -e "\n\tdowngrading picom (they broke something...)...\n"
-pacman -U --noconfirm file://${PWD}/Xstuff/picom-11.2-1-x86_64.pkg.tar.zst
-
-# Use sed to find the line containing 'IgnorePkg' and replace it with the picom package
-sed -i '/#IgnorePkg/c\IgnorePkg = picom' /etc/pacman.conf
 
 if [[ $2 -eq "vbox" ]] ; then
     echo -e "\n\tadopting the default netctl profile for wired connection..\n"

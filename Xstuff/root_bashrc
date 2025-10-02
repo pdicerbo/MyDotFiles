@@ -8,7 +8,8 @@
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias pacman='pacman --color=auto'
-alias e='emacs -nw'
+alias diff='diff --color=auto'
+alias ncdu='ncdu --color dark'
 alias p='python'
 
 # sourcing git-completion.bash
