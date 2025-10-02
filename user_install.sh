@@ -5,9 +5,8 @@ echo -e "\n\tfinalizing new user environment\n"
 set -ex
 
 cd $HOME
-alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles-bare-repo --work-tree=$HOME"
 git clone --branch topic/hyprland --bare https://github.com/pdicerbo/dotfiles.git $HOME/.dotfiles-bare-repo
-dotfiles checkout
+git --git-dir=$HOME/.dotfiles-bare-repo --work-tree=$HOME checkout
 
 if [[ $# -eq 1 ]] ; then
     cd $HOME
